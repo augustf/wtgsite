@@ -1,0 +1,38 @@
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%= @project.link %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @project.image_url %>
+</p>
+
+<p>
+  <b>Opening:</b>
+  <%= @project.opening %>
+</p>
+
+<p>
+  <b>Repo url:</b>
+  <%= @project.repo_url %>
+</p>
+
+<p>
+  <b>Excerpt:</b>
+  <%= @project.excerpt %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

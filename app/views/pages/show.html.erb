@@ -1,0 +1,23 @@
+<p>
+  <b>Title:</b>
+  <%= @page.title %>
+</p>
+
+<p>
+  <b>Html:</b>
+  <%= @page.html %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @page.slug %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @page.image %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
