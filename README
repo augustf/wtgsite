@@ -1,4 +1,4 @@
-Prerequisites: Imagemagic, rmagick, Authlogic, MySQL, Rails 3
+Prerequisites: Imagemagick, rmagick, Authlogic, ckeditor, MySQL, Rails 3
 
 Installation:
 Clone from git repository

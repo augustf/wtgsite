@@ -10,7 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100803172425) do
+ActiveRecord::Schema.define(:version => 20100803173554) do
+
+  create_table "ckeditor_assets", :force => true do |t|
+    t.string   "data_file_name",                                 :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 25
+    t.string   "guid",              :limit => 10
+    t.integer  "locale",            :limit => 1,  :default => 0
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "fk_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_assetable_type"
+  add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
 
   create_table "pages", :force => true do |t|
     t.string   "title"
@@ -27,13 +45,13 @@ ActiveRecord::Schema.define(:version => 20100803172425) do
 
   create_table "project_photos", :force => true do |t|
     t.integer  "project_id",         :null => false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.string   "photo_filename",     :null => false
+    t.string   "photo_content_type", :null => false
+    t.integer  "photo_file_size",    :null => false
+    t.datetime "photo_updated_at",   :null => false
   end
 
-  add_index "project_photos", ["project_id"], :name => "photo_constrained_by_project"
+  add_index "project_photos", ["project_id"], :name => "photo_constrained_by_project", :unique => true
 
   create_table "projects", :force => true do |t|
     t.string   "name"

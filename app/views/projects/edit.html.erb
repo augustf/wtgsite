@@ -5,21 +5,21 @@
 			<%= render :partial => 'form', :locals => { :project => @project, :button_text => 'Update' } %>
 			<br />
 			<h1>Photos Attached to this Project</h1>
-			<%= link_to "Attach a New Photo", :action => 'new_photo', :id => @project %>
-			<% unless @photos.size == 0 %>
+			<%#= link_to "Attach a New Photo", :action => 'new_photo', :id => @project %>
+			<%# unless @photos.size == 0 %>
 				<table class="admin" cellpadding="8" cellspacing="0" width="100%">
 					<tr>
 						<th>Photo</th>
 	    			<th>Actions</th>
 					</tr>
-				<% @photos.each do |ph| -%>
+				<%# @photos.each do |ph| -%>
 					<tr>
-						<td><%= image_tag(url_for_file_column(ph, 'photo', 'thumb'), :alt => '') unless ph.photo.nil? %></td>
-	   				<td><p><%= link_to "Delete", :controller => "projects", :action => "destroy_photo", :id => ph, :confirm => 'Are you sure you wish to delete this photo for this project?' %></p></td>
+						<td><%#= image_tag(url_for_file_column(ph, 'photo', 'thumb'), :alt => '') unless ph.photo.nil? %></td>
+	   				<td><p><%#= link_to "Delete", :controller => "projects", :action => "destroy_photo", :id => ph, :confirm => 'Are you sure you wish to delete this photo for this project?' %></p></td>
 					</tr>
-				<% end %>
+				<%# end %>
 				</table>
-			<% end %>
+			<%# end %>
 		</div>
 	</div>
 </div>

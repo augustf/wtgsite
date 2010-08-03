@@ -5,6 +5,8 @@ require 'rails/all'
 # Auto-require default libraries and those for the current Rails environment.
 Bundler.require :default, Rails.env
 
+require 'ckeditor/middleware' #temporary fix http://github.com/galetahub/rails-ckeditor/issues/closed#issue/16
+
 module Wtgsite
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -35,6 +37,9 @@ module Wtgsite
     #   g.template_engine :erb
     #   g.test_framework  :test_unit, :fixture => true
     # end
+
+    #Make JQuery Rails' default UJS
+    config.action_view.javascript_expansions[:defaults] = ['jquery-1.4.2', 'jquery-ujs/src/rails']
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
