@@ -1,5 +1,9 @@
 Wtgsite::Application.routes.draw do |map|
 
+  resources :blog_posts
+  
+  resources :blog_comments
+
 	map.login "login", :controller => "user_sessions", :action => "new"
 	
 	map.logout "logout", :controller => "user_sessions", :action => "destroy"
