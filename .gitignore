@@ -5,3 +5,5 @@ tmp/**/*
 tmp/restart.txt
 config/database.yml
 public/.htaccess
+Gemfile.lock
+config/initializers/paperclip.rb
