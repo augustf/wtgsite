@@ -6,5 +6,5 @@ Copy config/database.yml.sample to config/database.yml and complete it
 Run "bundle install"
 Run "rake db:migrate"
 
-NB: Under Rails 3, the default authlogic gem doesn't work, and this branch (git://github.com/odorcicd/authlogic.git rails3 branch) must be used. This is already provided for in the Gemfile
+NB: Under Rails 3, the default authlogic gem doesn't work, and this branch (git://github.com/odorcicd/authlogic.git rails3 branch) must be used. This is already provided for in the Gemfile. See http://www.stjhimy.com/posts/6 for details
 
