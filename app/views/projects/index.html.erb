@@ -1,35 +1,44 @@
-<h1>Listing projects</h1>
+<div class="cell_full">
+   <div class="cell_full-top"><div class="cell_full-top-padding"><h1><small><%= link_to "Home", :controller => "frontpage" %> > </small>All Projects</h1></div></div>
+   <div class="cell-padding cell-padding_full">
+      <div class="indent-1">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Link</th>
-    <th>Image url</th>
-    <th>Opening</th>
-    <th>Repo url</th>
-    <th>Excerpt</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+       <% if current_user %>
+       <div class="grayround_box">
+         <div class="grayround_top"><div></div></div>
+           <div class="grayround_cont"><%= link_to "Create New Project", :controller => 'projects', :action => 'new' %></div>
+         <div class="grayround_bot"><div></div></div>
+       </div>
+       <% end %>
 
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.name %></td>
-    <td><%= project.description %></td>
-    <td><%= project.link %></td>
-    <td><%= project.image_url %></td>
-    <td><%= project.opening %></td>
-    <td><%= project.repo_url %></td>
-    <td><%= project.excerpt %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+       <p class="showhide"><a href="#" id="show-all">Show All</a> <a href="#" id="hide-all">Hide All</a></p>
+       <% @projects.each do |project| %>
+            <h2 class="cat-head trigger" id="cat_<%= project.id %>"><a href="#"><span id="h2arrow" class="h2min">&nbsp;&nbsp;</span>&nbsp;<%= project.name unless project.nil? %></a></h2>
+            <div class="toggle_container">
+               <div class="block landingblock">
+                  <div style="float:left;width:420px;">
+                     <h3><%= link_to "More Details", :action => "show", :id => project %>&nbsp;&nbsp;|&nbsp;&nbsp;<% if project.link and project.link != "" %><%= link_to "See it Live", project.link unless project.nil? %></h3><% end %>
+                     <%= project.excerpt unless project.nil? %>
+                     <br />
+                     <% if current_user %>
+                     <div class="grayround_box">
+                        <div class="grayround_top"><div></div></div>
+                           <div class="grayround_cont"><%= link_to "Edit Project", :action => :edit, :id => project %></div>
+                        <div class="grayround_bot"><div></div></div>
+                     </div>
+                     <% end %>
 
-<br />
+                  </div>
+                  <div class="screenset"><div class="screenset-padding"><%= image_tag(project.image.url(:medium), :alt => '') unless project.image.nil? %></div></div>
+               </div>
+            </div>
 
-<%= link_to 'New project', new_project_path %>
+       <% end %>
+      </div>
+   </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("h2#cat_<%= params[:id] %>").next(".toggle_container").show();
+  });
+</script>

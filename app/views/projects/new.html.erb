@@ -1,5 +1,8 @@
-<h1>New project</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', projects_path %>
+<div class="cell_full">
+	<div class="cell_full-top"><div class="cell_full-top-padding"><h1><small><%= link_to "Home", :controller => "frontpage" %> > <%= link_to "Projects", :controller => :projects %> > </small>Create New Project</h1></div></div>
+	<div class="cell-padding cell-padding_full">
+		<div class="indent-1">
+			<%= render :partial => 'form', :locals => { :project => @project, :button_text => 'Create' } %>
+		</div>
+	</div>
+</div>

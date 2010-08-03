@@ -1,0 +1,10 @@
+<div class="cell_full">
+	<div class="cell_full-top"><div class="cell_full-top-padding"><h1><small><%= link_to "Home", :controller => "frontpage" %> > </small>About Us</h1></div></div>
+	<div class="cell-padding cell-padding_full">
+		<div class="indent-1">
+			<div id="pgHL" class="people"><div id="pgHL-people-padding"><p>Created in 2006, we build websites and a whole lot more. <%= link_to "Read more.", Page.find(1) %></p></div></div>
+			<br /><h1>Who We Are</h1>
+			<%= render :partial => "users/list" %>
+		</div>
+	</div>
+</div>

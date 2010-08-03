@@ -1,38 +1,40 @@
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
+<div class="cell_full">
+   <div class="cell_full-top"><div class="cell_full-top-padding"><h1><small><%= link_to "Home", :controller => "frontpage" %> > <%= link_to "All Projects", :action => 'index' %> > </small><%= @project.name %></h1></div></div>
+   <div class="cell-padding cell-padding_full">
+			<br />
 
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
-
-<p>
-  <b>Link:</b>
-  <%= @project.link %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @project.image_url %>
-</p>
-
-<p>
-  <b>Opening:</b>
-  <%= @project.opening %>
-</p>
-
-<p>
-  <b>Repo url:</b>
-  <%= @project.repo_url %>
-</p>
-
-<p>
-  <b>Excerpt:</b>
-  <%= @project.excerpt %>
-</p>
-
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+			<div style="border-top:solid 2px #000; border-bottom:solid 2px #000; margin:0 -4px;">
+				<div id="main_image"><%#= image_tag(url_for_file_column(@project, 'image_url', 'show'), :alt => '', :class => 'hidethis') unless @project.image_url.nil? %></div>
+				<ul class="gallery_cell_unstyled"> 
+					<li id="main_photo"><%#= image_tag(url_for_file_column(@project, 'image_url', 'show'), :alt => '') unless @project.image_url.nil? %></li>
+					<%# for @photo in @photos %>
+					<li><%#= image_tag(url_for_file_column(@photo, 'photo', 'show'), :alt => '') unless @photo.photo.nil? %></li>
+					<%# end %>
+					<div style="clear:both;"></div>
+				</ul>
+			</div>
+      <div class="indent-2">
+				
+	      <% if current_user %>
+	      <div class="grayround_box">
+	        <div class="grayround_top"><div></div></div>
+	          <div class="grayround_cont"><%= link_to "Edit Project", :controller => 'projects', :action => 'edit', :id => @project %></div>
+	        <div class="grayround_bot"><div></div></div>
+	      </div>
+	      <% end %>
+				
+				<div class="opening"><h1 style="margin-bottom:22px;"><%= @project.opening %></h1></div>
+				<h4><%= link_to "Visit Live Site", @project.link %></h4>
+				<div style="clear:both;"></div>
+				<% unless @project.repo_url.nil? or @project.repo_url == "" %>
+				<div id="repo">
+					<div id="repo-padding">
+						<h2><%= link_to "View Code Online", @project.repo_url %></h1>
+						<h3><%= @project.repo_url %></h2>
+					</div>
+				</div>
+				<% end %>
+				<div id="descr"><%=raw @project.description %></div>
+      </div>
+   </div>
+</div>

@@ -1,5 +1,5 @@
 <% form_for(@user) do |f| %>
-  <%= f.error_messages %>
+  <%#= f.error_messages %>
 
   <div class="field">
     <%= f.label :username %><br />
@@ -22,9 +22,13 @@
     <%= f.text_field :image %>
   </div>
   <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
   </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>  
   <div class="actions">
     <%= f.submit %>
   </div>

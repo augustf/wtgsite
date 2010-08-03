@@ -1,0 +1,30 @@
+<% if current_user %>
+<div class="grayround_box">
+		<div class="grayround_top"><div></div></div>
+		<div class="grayround_cont"><%= link_to "Create New User", :controller => 'users', :action => 'new' %></div>
+		<div class="grayround_bot"><div></div></div>
+</div>
+<% end %>
+
+<p class="showhide"><a href="#" id="show-all">Show All</a> <a href="#" id="hide-all">Hide All</a></p>
+<% @users.each do |user| %>
+	<h2 class="cat-head trigger"><a href="#"><span id="h2arrow" class="h2min">&nbsp;&nbsp;</span>&nbsp;<%= user.name unless user.nil? %></a></h2>
+	<div class="toggle_container">
+		<div class="block landingblock">
+			<div style="float:left;width:420px;">
+				<% if user.website and user.website != "" %><h3><%= link_to "View My Website", user.website unless user.nil? %></h3><% end %>
+				<%= user.greeting unless user.nil? %>
+				<br />
+				<% if current_user %>
+				<div class="grayround_box">
+						<div class="grayround_top"><div></div></div>
+						<div class="grayround_cont"><%= link_to "Edit Profile", :controller => 'users', :action => 'edit', :id => user %></div>
+						<div class="grayround_bot"><div></div></div>
+				</div>
+				<% end %>
+			</div>
+			<div class="screenset"><div class="screenset-padding"><%#= image_tag(url_for_file_column(user, "image", "embed"), :height => 160, :alt => "") unless user.image.nil? %></div></div>
+		</div>
+	</div>
+
+<% end %>

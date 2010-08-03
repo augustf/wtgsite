@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Web Technologies Group"/>
+  <title>Web Technologies Group - <%= controller.controller_name.capitalize %></title>
+	<%= stylesheet_link_tag "main", :media => "all" %>
+	<%= stylesheet_link_tag "forms", :media => "screen" %>
+	<%= javascript_include_tag "jquery-latest.pack.js" %>
+	<%= javascript_include_tag "jquery-ui.js" %>
+	<%= javascript_include_tag "jquery.pngFix.pack.js" %>
+	<%= javascript_include_tag "jquery.galleria.pack.js" %>
+	<%= javascript_include_tag "projectexpansion.js" %>
+	<%#= include_tiny_mce_if_needed %>
+	<% if controller.controller_name == 'projects' %>
+	 		<script type="text/javascript">
+	
+				$(document).ready(function() {
+					
+					$('.gallery_cell_unstyled').addClass('gallery_cell'); // adds new class name to maintain degradability
+					
+					$('ul.gallery_cell').galleria({
+						history   : true, // activates the history object for bookmarking, back-button etc.
+						clickNext : true, // helper for making the image clickable
+						insert    : '#main_image', // the containing selector for our main image
+						onImage   : function(image,caption,thumb) { // let's add some image effects for demonstration purposes
+							$('#main_image').children(".hidethis").hide();
+		
+							// fade in the image & caption
+							//if(! ($.browser.mozilla && navigator.appVersion.indexOf("Win")!=-1) ) { // FF/Win fades large images terribly slow
+								image.css('display','none').fadeIn(1000);
+							//}
+							
+							// fetch the thumbnail container
+							var _li = thumb.parents('li');
+							
+							// fade out inactive thumbnail
+							_li.siblings().children('img.selected').fadeTo(500,0.3);
+							
+							// fade in active thumbnail
+							thumb.fadeTo('fast',1).addClass('selected');
+							
+						},
+						onThumb : function(thumb) { // thumbnail effects goes here
+							
+							// fetch the thumbnail container
+							var _li = thumb.parents('li');
+							
+							// if thumbnail is active, fade all the way.
+							var _fadeTo = _li.is('.active') ? '1' : '0.3';
+							
+							// fade in the thumbnail when finnished loading
+							thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1500);
+							
+							// hover effects
+							thumb.hover(
+								function() { thumb.fadeTo('fast',1); },
+								function() { _li.not('.active').children('img').fadeTo('fast',0.3); } // don't fade out if the parent is active
+							)
+						}
+					});
+				});
+			
+			</script>
+	<% end %>
+	 
+</head>
+<body>
+   <%#= render :partial => "includes/login" %>
+
+   <div id="wrap"><div id="page">
+      <div id="header">
+         <div id="header-padding">
+            <%= link_to image_tag("wtg_logo.png", :alt => "Web Tech Group", :title => "Home"), :controller => "frontpage" %>
+         </div>
+      </div>
+      <div id="maincell">
+         <!-- Start top menu tabs -->
+         <ul id="mainmenu">
+            <li<% if controller.controller_name == 'about' %> class="selected"<% end %>><%= link_to 'About', :controller=>:about %></li>
+            <li<% if controller.controller_name == 'projects' %> class="selected"<% end %>><%= link_to 'Projects', :controller=>:projects %></li>
+            <li<%# if controller.controller_name == 'ticket' %> class="selected"<%# end %>><%#= link_to 'Get Help', :controller => :ticket %></li>
+         </ul>
+         <div style="clear:both;"></div>
+         <% if flash[:notice] %><p id="flashblock"><%= flash[:notice] %></p><% end %>
+         <%= yield %>
+      </div>
+      <div id="footer"><p>Copyright &copy; 2009 Student Senate Web Technologies Group.  All rights reserved.  <%= mail_to "web@rpisenate.com", "Contact Us", :encode => "hex" %></p><p><%#= link_to "Login", :controller=>"login"%></p></div>
+   </div></div>
+
+</body>
+</html>
