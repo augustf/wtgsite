@@ -1,0 +1,13 @@
+development:
+  adapter: mysql
+  database: wtgsite
+  username: some_user
+  password: some_password
+  host: some_host
+
+production:
+  adapter: mysql
+  database: wtgsite
+  username: some_user
+  password: some_password
+  host: some_host  
