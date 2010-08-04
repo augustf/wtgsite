@@ -7,3 +7,5 @@ config/database.yml
 public/.htaccess
 Gemfile.lock
 config/initializers/paperclip.rb
+config/initializers/setup_mail.rb
+app/mailers/contact_mailer.rb

@@ -1,0 +1,21 @@
+<h1>Listing Feedback</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact.name %></td>
+    <td><%= contact.email %></td>
+    <td><%= contact.body %></td>
+    <td><%= link_to 'Show', contact %></td>
+    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

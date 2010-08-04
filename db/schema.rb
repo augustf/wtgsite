@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100804192518) do
+ActiveRecord::Schema.define(:version => 20100804213643) do
 
   create_table "blog_comments", :force => true do |t|
     t.integer  "blog_post_id"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(:version => 20100804192518) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "fk_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_assetable_type"
   add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
+
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "title"

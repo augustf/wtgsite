@@ -1,0 +1,5 @@
+class ContactMailer < ActionMailer::Base
+	def contact_confirmation(contact)  
+		mail(:to => "test@mydomain.com", :subject => "User Feedback", :from => contact.email)  
+	end 
+end

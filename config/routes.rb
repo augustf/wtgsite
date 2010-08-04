@@ -1,6 +1,10 @@
 Wtgsite::Application.routes.draw do |map|
 
+  resources :contacts
+
 	root :to => "frontpage#index"
+
+	map.contact "contact", :controller => "contacts", :action => "new"
 
 	map.login "login", :controller => "user_sessions", :action => "new"
 	
