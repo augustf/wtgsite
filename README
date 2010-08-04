@@ -1,5 +1,7 @@
 Prerequisites: Imagemagick, rmagick, Authlogic, ckeditor, MySQL, Rails 3
 
+Uses: Paperclip for image attachments, ckeditor-rails for WYSIWYG editing
+
 Installation:
 Clone from git repository
 Copy config/database.yml.sample to config/database.yml and complete it
