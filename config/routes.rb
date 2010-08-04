@@ -1,16 +1,21 @@
 Wtgsite::Application.routes.draw do |map|
 
-  resources :blog_posts
-  
-  resources :blog_comments
+	root :to => "frontpage#index"
 
 	map.login "login", :controller => "user_sessions", :action => "new"
 	
 	map.logout "logout", :controller => "user_sessions", :action => "destroy"
 
+  resources :blog_posts
+  
+  resources :blog_comments
+
+
   resources :user_sessions
 
   resources :projects
+  
+  resources :project_photos
 
   resources :users
 
@@ -22,8 +27,6 @@ Wtgsite::Application.routes.draw do |map|
 	
 	match 'about' => 'about#index'
 	
-	root :to => "frontpage#index"
-
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
