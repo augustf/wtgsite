@@ -18,6 +18,8 @@ Wtgsite::Application.routes.draw do |map|
 
 	match 'frontpage' => 'frontpage#index'
 	
+	match 'blog' => 'blog_posts#index'
+	
 	match 'about' => 'about#index'
 	
 	root :to => "frontpage#index"

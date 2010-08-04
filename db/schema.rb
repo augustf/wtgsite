@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100803235333) do
+ActiveRecord::Schema.define(:version => 20100804192518) do
 
   create_table "blog_comments", :force => true do |t|
     t.integer  "blog_post_id"
@@ -103,13 +103,16 @@ ActiveRecord::Schema.define(:version => 20100803235333) do
     t.string   "name"
     t.string   "email"
     t.text     "greeting"
-    t.string   "image"
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
 end

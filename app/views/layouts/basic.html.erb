@@ -6,6 +6,7 @@
    <%= javascript_include_tag :defaults %>
 </head>
 <body>
+	 <%= render :partial => "includes/login" %>
    <div id="wrap"><div id="page">
       <div id="header">
          <div id="header-padding">
@@ -17,8 +18,10 @@
          <%= yield %>
       </div>
       <div id="footer">
-				<%= link_to "Register", new_user_path %>|
-				<%= link_to "Login", login_path %>
+      	<% if !current_user %>
+					<%= link_to "Register", new_user_path %>|
+					<%= link_to "Login", login_path %>
+				<% end %>
       </div>
    </div></div>
 

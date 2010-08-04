@@ -9,12 +9,12 @@
 	<%= javascript_include_tag :ckeditor %>
 	
 	<%#= javascript_include_tag "jquery-latest.pack.js" %>
-	<%#= javascript_include_tag "jquery-ui.js" %>
-	<%#= javascript_include_tag "jquery.pngFix.pack.js" %>
-	<%#= javascript_include_tag "jquery.galleria.pack.js" %>
-	<%#= javascript_include_tag "projectexpansion.js" %>
+	<%= javascript_include_tag "jquery-ui.js" %>
+	<%= javascript_include_tag "jquery.pngFix.pack.js" %>
+	<%= javascript_include_tag "jquery.galleria.pack.js" %>
+	<%= javascript_include_tag "projectexpansion.js" %>
 
-	<% if controller.controller_name == 'moose' %>
+	<% if controller.controller_name == 'projects' %>
 	 		<script type="text/javascript">
 	
 				$(document).ready(function() {
@@ -81,13 +81,13 @@
          <ul id="mainmenu">
             <li<% if controller.controller_name == 'about' %> class="selected"<% end %>><%= link_to 'About', :controller=>:about %></li>
             <li<% if controller.controller_name == 'projects' %> class="selected"<% end %>><%= link_to 'Projects', :controller=>:projects %></li>
-            <li<%# if controller.controller_name == 'ticket' %> class="selected"<%# end %>><%#= link_to 'Get Help', :controller => :ticket %></li>
+            <li<% if controller.controller_name == 'blog_posts' %> class="selected"<% end %>><%= link_to 'Blog', :controller => :blog_posts %></li>
          </ul>
          <div style="clear:both;"></div>
          <% if flash[:notice] %><p id="flashblock"><%= flash[:notice] %></p><% end %>
          <%= yield %>
       </div>
-      <div id="footer"><p>Copyright &copy; 2009 Student Senate Web Technologies Group.  All rights reserved.  <%= mail_to "web@rpisenate.com", "Contact Us", :encode => "hex" %></p><p><%#= link_to "Login", :controller=>"login"%></p></div>
+      <div id="footer"><% if !current_user %><p><%= link_to "Register", new_user_path %>|<%= link_to "Login", login_path %></p><% end %></div>
    </div></div>
 
 </body>

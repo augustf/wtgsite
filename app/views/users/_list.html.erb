@@ -23,7 +23,8 @@
 				</div>
 				<% end %>
 			</div>
-			<div class="screenset"><div class="screenset-padding"><%#= image_tag(url_for_file_column(user, "image", "embed"), :height => 160, :alt => "") unless user.image.nil? %></div></div>
+			<div class="screenset"><div class="screenset-padding"><%= image_tag user.photo.url(:thumb) %>
+</div></div>
 		</div>
 	</div>
 
