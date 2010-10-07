@@ -3,17 +3,16 @@ Wtgsite::Application.routes.draw do |map|
   resources :contacts
 
 	root :to => "frontpage#index"
-
-	map.contact "contact", :controller => "contacts", :action => "new"
-
-	map.login "login", :controller => "user_sessions", :action => "new"
 	
-	map.logout "logout", :controller => "user_sessions", :action => "destroy"
+	match "contact", :to => "contacts#new", :as => "contact"
+
+	match "login", :to => "user_sessions#new", :as => "login"
+	
+	match "logout", :to => "user_sessions#destroy", :as => "logout"
 
   resources :blog_posts
   
   resources :blog_comments
-
 
   resources :user_sessions
 
@@ -28,8 +27,6 @@ Wtgsite::Application.routes.draw do |map|
 	match 'frontpage' => 'frontpage#index'
 	
 	match 'blog' => 'blog_posts#index'
-	
-	match 'about' => 'about#index'
 	
   # See how all your routes lay out with "rake routes"
 

@@ -5,7 +5,6 @@ one:
   name: MyString
   email: MyString
   greeting: MyText
-  image: MyString
   website: MyString
 
 two:
@@ -13,5 +12,4 @@ two:
   name: MyString
   email: MyString
   greeting: MyText
-  image: MyString
   website: MyString
