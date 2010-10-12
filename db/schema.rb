@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100804213643) do
+ActiveRecord::Schema.define(:version => 20101007175326) do
 
   create_table "blog_comments", :force => true do |t|
     t.integer  "blog_post_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20100804213643) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
