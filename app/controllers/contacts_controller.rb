@@ -1,5 +1,4 @@
 class ContactsController < ApplicationController
-	layout "page"
 	
   # GET /contacts
   # GET /contacts.xml

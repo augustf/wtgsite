@@ -1,5 +1,4 @@
 class ProjectPhotosController < ApplicationController
-	layout "page"
 	
   # GET /project_photos/new
   # GET /project_photos/new.xml

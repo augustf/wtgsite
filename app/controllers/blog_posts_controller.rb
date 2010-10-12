@@ -1,5 +1,4 @@
 class BlogPostsController < ApplicationController
-	layout "page"
 	
   # GET /blog_posts
   # GET /blog_posts.xml
