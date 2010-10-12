@@ -1,0 +1,2 @@
+class BlockColumnsController < ApplicationController
+end
