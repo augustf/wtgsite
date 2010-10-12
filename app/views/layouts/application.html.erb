@@ -17,7 +17,11 @@
 	<% if flash[:notice] %>
 		<p id="flashblock"><%= flash[:notice] %></p>
 	<% end %>
-	<%= yield %>
+	
+	<section>
+		<%= yield %>
+	</section>
+	
 	<footer>
 		<% if !current_user %>
 		<%= link_to "Register", new_user_path %>|
