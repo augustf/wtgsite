@@ -1,5 +1,6 @@
 class RemoveProjects < ActiveRecord::Migration
   def self.up
+    execute "ALTER TABLE project_photos DROP FOREIGN KEY photo_constrained_by_project"
     drop_table :projects
     drop_table :project_photos
   end

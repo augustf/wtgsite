@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101012041355) do
+ActiveRecord::Schema.define(:version => 20101012043913) do
 
   create_table "block_columns", :force => true do |t|
     t.integer "block_id"
