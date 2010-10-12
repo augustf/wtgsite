@@ -27,7 +27,6 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts/new.xml
   def new
     @blog_post = BlogPost.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @blog_post }
@@ -43,7 +42,7 @@ class BlogPostsController < ApplicationController
   # POST /blog_posts.xml
   def create
     @blog_post = BlogPost.new(params[:blog_post])
-
+		@blog_post.user_id = current_user.id #set author of blog post correctly
     respond_to do |format|
       if @blog_post.save
         format.html { redirect_to(@blog_post, :notice => 'Blog post was successfully created.') }

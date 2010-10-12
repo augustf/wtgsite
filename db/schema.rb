@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101007175326) do
+ActiveRecord::Schema.define(:version => 20101012041355) do
+
+  create_table "block_columns", :force => true do |t|
+    t.integer "block_id"
+    t.integer "column_id"
+    t.integer "cardinality"
+  end
+
+  create_table "blocks", :force => true do |t|
+    t.integer  "image_id"
+    t.string   "name"
+    t.text     "html"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "blog_comments", :force => true do |t|
     t.integer  "blog_post_id"
@@ -45,6 +59,14 @@ ActiveRecord::Schema.define(:version => 20101007175326) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_assetable_type"
   add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
 
+  create_table "columns", :force => true do |t|
+    t.integer  "page_id"
+    t.float    "width"
+    t.integer  "cardinality"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "contacts", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -53,37 +75,17 @@ ActiveRecord::Schema.define(:version => 20101007175326) do
     t.datetime "updated_at"
   end
 
-  create_table "pages", :force => true do |t|
-    t.string   "title"
-    t.text     "html"
-    t.string   "slug"
-    t.string   "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image_file_name"
+  create_table "images", :force => true do |t|
+    t.string   "image_filenameg"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
 
-  create_table "project_photos", :force => true do |t|
-    t.integer  "project_id",         :null => false
-    t.string   "photo_filename",     :null => false
-    t.string   "photo_content_type", :null => false
-    t.integer  "photo_file_size",    :null => false
-    t.datetime "photo_updated_at",   :null => false
-  end
-
-  add_index "project_photos", ["project_id"], :name => "photo_constrained_by_project", :unique => true
-
-  create_table "projects", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "link"
-    t.string   "image_url"
-    t.string   "opening"
-    t.string   "repo_url"
-    t.text     "excerpt"
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"

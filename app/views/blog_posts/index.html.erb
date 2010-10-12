@@ -1,25 +1,26 @@
-<h1>Listing blog_posts</h1>
+<div class="cell_full">
+	<div class="cell_full-top"><div class="cell_full-top-padding"><h1><small><%= link_to "Home", :controller => "frontpage" %> > </small>Blog</h1></div></div>
+	<div class="cell-padding cell-padding_full">
+		<div class="indent-1">
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+			
+			<% if current_user %>
+			<div class="grayround_box">
+					<div class="grayround_top"><div></div></div>
+					<div class="grayround_cont"><%= link_to "New Blog Post", :controller => 'blog_posts', :action => 'new' %></div>
+					<div class="grayround_bot"><div></div></div>
+			</div>
+			<% end %>
+			
+			<% @blog_posts.each do |blog_post| %>
+				<h1><%= blog_post.title %></h1>
+				<p>By: <%= link_to(User.find(blog_post.user_id).name, :controller => 'users', :action => 'show', :id => blog_post.user_id) %></p>
+				<p><% body = snippet(blog_post.body) %>
+				<%= body %>
+				<% if truncated?(body) %>&nbsp;<%= link_to('[Read More]', :action => 'show', :id => blog_post) %><% end %>
+				</p>
+			<% end %>
 
-<% @blog_posts.each do |blog_post| %>
-  <tr>
-    <td><%= blog_post.title %></td>
-    <td><%= blog_post.body %></td>
-    <td><%= link_to 'Show', blog_post %></td>
-    <td><%= link_to 'Edit', edit_blog_post_path(blog_post) %></td>
-    <td><%= link_to 'Destroy', blog_post, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Blog post', new_blog_post_path %>
+		</div>
+	</div>
+</div>

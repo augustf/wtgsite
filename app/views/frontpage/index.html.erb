@@ -1,5 +1,5 @@
 <div class="cell_3rd">
-   <%link_to('about') do %><div class='cell_3rd-top'><h1>About Us</h1></div><% end %>
+   <%link_to(:controller => 'users') do %><div class='cell_3rd-top'><h1>About Us</h1></div><% end %>
    <a href="<%= page_url(Page.find(1))%>"><div class="cell_3rd-img"><div class="cell_3rd_caption">Learn More</div><%= image_tag("fp/updates.jpg", :alt => "") %></div></a>
    <div class="cell-padding cell-padding_3rd">
       <div class="indent-1">
@@ -19,7 +19,7 @@
 </div>
 </div>
 <div class="cell_3rd">
-   <%link_to('frontpage') do %><div class='cell_3rd-top'><h1>Blog</h1></div><% end %>
+   <%link_to(:controller => 'blog_posts') do %><div class='cell_3rd-top'><h1>Blog</h1></div><% end %>
    <a href="blog"><div class="cell_3rd-img"><div class="cell_3rd_caption">Read Blog</div><%= image_tag("fp/updates.jpg", :alt => "") %></div></a>
    <div class="cell-padding cell-padding_3rd">
       <div class="indent-1">
