@@ -18,14 +18,14 @@ HTML
 	HEAD
 	BODY
 		HEADER
-		DIV#main (main content goes here)
+		ARTICLE (main content goes here)
 		FOOTER
 		
 
 Within pages, the following HTML5 elements are used for pages composed of columns, which in turn are composed of blocks.
 
-DIV.column (individual column)
-	ARTICLE (single block for content)
+SECTION (individual column)
+	div.block (single block for content)
 		HGROUP
 			H1
 			H2

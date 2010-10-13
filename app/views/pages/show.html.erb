@@ -1,17 +1,17 @@
 <h1><%= @page.title %></h1>
 <%= image_tag(@page.image.url(:medium), :alt => '') unless @page.image.nil? %>
 <% @columns.each do |col| %>
-<div class="column">
+<section>
 	<%= col.blocks.each do |block| %>
-	<article>
+	<div class="block">
 		<hgroup>
 			<h1><%= block.name %></h1>
 		</hgroup>
 		<%#= image_tag(block.image.url(:medium), :alt => '') unless block.image.nil? %>
 		<%= block.html %>
-	</article>
+	</div>
 	<% end %>
-</div>
+</section>
 <% end %>
 
 <% if current_user %>
