@@ -25,7 +25,7 @@ HTML
 Within pages, the following HTML5 elements are used for pages composed of columns, which in turn are composed of blocks.
 
 SECTION (individual column)
-	div.block (single block for content)
+	DIV.block (single block for content)
 		HGROUP
 			H1
 			H2
