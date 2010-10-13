@@ -29,4 +29,12 @@ SECTION (individual column)
 		HGROUP
 			H1
 			H2
-	
+
+
+The blog also uses this hierarchy:
+
+SECTION (one blog post)
+	HGROUP
+		H1
+		H2
+	P (blog content)
