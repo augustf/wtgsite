@@ -1,26 +1,19 @@
-<div class="cell_full">
-	<div class="cell_full-top"><div class="cell_full-top-padding"><h1><small><%= link_to "Home", :controller => "frontpage" %> > </small>Blog</h1></div></div>
-	<div class="cell-padding cell-padding_full">
-		<div class="indent-1">
-
-			
-			<% if current_user %>
-			<div class="grayround_box">
-					<div class="grayround_top"><div></div></div>
-					<div class="grayround_cont"><%= link_to "New Blog Post", :controller => 'blog_posts', :action => 'new' %></div>
-					<div class="grayround_bot"><div></div></div>
-			</div>
-			<% end %>
-			
-			<% @blog_posts.each do |blog_post| %>
-				<h1><%= blog_post.title %></h1>
-				<p>By: <%= link_to(User.find(blog_post.user_id).name, :controller => 'users', :action => 'show', :id => blog_post.user_id) %></p>
-				<p><% body = snippet(blog_post.body) %>
-				<%= body %>
-				<% if truncated?(body) %>&nbsp;<%= link_to('[Read More]', :action => 'show', :id => blog_post) %><% end %>
-				</p>
-			<% end %>
-
-		</div>
-	</div>
-</div>
+<h1>Blog</h1>
+<% @blog_posts.each do |blog_post| %>
+<section>
+	<hgroup>
+		<h1><%= blog_post.title %></h1>
+		<h2>By <%= link_to User.find(blog_post.user_id).name, user_path(blog_post.user_id) %></h2>
+	</hgroup>
+	<p>
+		<% body = snippet(blog_post.body) %>
+		<%= body %>
+		<% if truncated?(body) %>&nbsp;<%= link_to('[Read More]', :action => 'show', :id => blog_post) %><% end %>
+	</p>
+</section>
+<% end %>
+<% if current_user %>
+<ul>
+	<li><%= link_to "New Post", new_blog_post_path %></li>
+</ul>
+<% end %>
