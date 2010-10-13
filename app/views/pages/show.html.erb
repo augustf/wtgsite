@@ -1,5 +1,19 @@
 <h1><%= @page.title %></h1>
 <%= image_tag(@page.image.url(:medium), :alt => '') unless @page.image.nil? %>
+<% @columns.each do |col| %>
+<div class="column">
+	<%= col.blocks.each do |block| %>
+	<article>
+		<hgroup>
+			<h1><%= block.name %></h1>
+		</hgroup>
+		<%#= image_tag(block.image.url(:medium), :alt => '') unless block.image.nil? %>
+		<%= block.html %>
+	</article>
+	<% end %>
+</div>
+<% end %>
+
 <% if current_user %>
 <ul>
 	<li><%= link_to "Edit", edit_page_path(@page) %></li>

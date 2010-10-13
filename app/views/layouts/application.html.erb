@@ -12,15 +12,15 @@
 <body>
 	<header>
 		<%= render :partial => "includes/login" %>
-		<%= link_to image_tag("your_logo_here.png", :alt => "The Logo", :title => "Home") %>
+		<%= link_to image_tag("your_logo_here.png", :alt => "The Logo", :title => "Home"), frontpage_path %>
 	</header>
 	<% if flash[:notice] %>
 		<p id="flashblock"><%= flash[:notice] %></p>
 	<% end %>
 	
-	<section>
+	<div id="main">
 		<%= yield %>
-	</section>
+	</div>
 	
 	<footer>
 		<% if !current_user %>
