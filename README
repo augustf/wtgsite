@@ -8,3 +8,15 @@ Copy config/database.yml.sample to config/database.yml and complete it
 Update mailer settings in config/initializers/setup_mail.rb and app/mailers/contact_mailer.rb 
 Run "bundle install"
 Run "rake db:migrate"
+
+
+HTML5 Element Hierarchy:
+
+When designing a layout for the app, use this hierarchy for quick and easy styling:
+
+HTML
+	HEAD
+	BODY
+		HEADER
+		SECTION (main content goes here)
+		FOOTER
