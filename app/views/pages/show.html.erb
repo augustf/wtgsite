@@ -1,17 +1,7 @@
-<div class="cell_full">
-	<div class="cell_full-top"><div class="cell_full-top-padding"><h1><small><%= link_to "Home", :controller => "frontpage" %> > </small><%= @page.title %></h1></div></div>
-	<div class="cell-padding cell-padding_full">
-		<br /><div style="border-top:solid 2px #111111; border-bottom:solid 2px #111111; margin:0 -4px;">
-			<%= image_tag(@page.image.url(:medium), :alt => '') unless @page.image.nil? %>
-		</div>
-		<div class="indent-2">
-			<% if current_user %>
-			<div class="grayround_box">
-	   		<div class="grayround_top"><div></div></div>
-	      	<div class="grayround_cont"><%= link_to "Edit this Page", :controller => 'pages', :action => 'edit', :id => @page %></div>
-	   		<div class="grayround_bot"><div></div></div>
-			</div>
-			<% end %>
-		</div>
-	</div>
-</div>
+<h1><%= @page.title %></h1>
+<%= image_tag(@page.image.url(:medium), :alt => '') unless @page.image.nil? %>
+<% if current_user %>
+<ul>
+	<li><%= link_to "Edit", edit_page_path(@page) %></li>
+</ul>
+<% end %>

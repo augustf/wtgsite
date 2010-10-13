@@ -1,8 +1,2 @@
-<div class="cell_full">
-	<div class="cell_full-top"><div class="cell_full-top-padding"><h1><small><%= link_to "Home", :controller => "frontpage" %> > <%= link_to "Pages", :controller => :pages %> > </small>Edit Existing Page</h1></div></div>
-	<div class="cell-padding cell-padding_full">
-		<div class="indent-1">
-			<%= render :partial => 'form', :locals => { :page => @page, :button_text => 'Update' } %>
-		</div>
-	</div>
-</div>
+<h1>Edit Page <%= @page.title %>
+<%= render :partial => 'form', :locals => { :page => @page, :button_text => 'Update' } %>
