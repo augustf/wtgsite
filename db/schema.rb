@@ -10,13 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101014004811) do
-
-  create_table "block_columns", :force => true do |t|
-    t.integer "block_id"
-    t.integer "column_id"
-    t.integer "position"
-  end
+ActiveRecord::Schema.define(:version => 20101014030341) do
 
   create_table "blocks", :force => true do |t|
     t.integer  "image_id"
@@ -24,6 +18,8 @@ ActiveRecord::Schema.define(:version => 20101014004811) do
     t.text     "html"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "column_id"
+    t.integer  "position"
   end
 
   create_table "blog_comments", :force => true do |t|

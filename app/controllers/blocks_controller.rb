@@ -17,7 +17,7 @@ class BlocksController < ApplicationController
     @block = Block.find(params[:id])
     
     respond_to do |format|
-      format.html {render :layout => false} # show.html.erb (without any layout)
+      format.html # show.html.erb
       format.xml  { render :xml => @block }
     end
   end
