@@ -1,0 +1,12 @@
+<h1>Blocks List</h1>
+<ul>
+	<% @blocks.each do |block| %>
+	<li><%= block.name %> <% if current_user %>(<%= link_to "Edit", edit_block_path(block) %>, <%= link_to "Delete", block, :confirm => 'Are you sure you want to delete this block?', :method => :delete %>)<% end %></li>
+	<% end %>
+</ul>
+
+<% if current_user %>
+<ul>
+	<li><%= link_to "Create New Block", new_block_path %></li>
+</ul>
+<% end %>

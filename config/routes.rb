@@ -1,24 +1,24 @@
 Wtgsite::Application.routes.draw do |map|
-
-  resources :contacts
-
-	root :to => "frontpage#index"
+  
+  root :to => "frontpage#index"
 	
 	match "contact", :to => "contacts#new", :as => "contact"
 
 	match "login", :to => "user_sessions#new", :as => "login"
 	
 	match "logout", :to => "user_sessions#destroy", :as => "logout"
+	
+	resources :contacts
+	
+	resources :blocks
+	
+	resources :columns
 
   resources :blog_posts
   
   resources :blog_comments
 
   resources :user_sessions
-
-  resources :projects
-  
-  resources :project_photos
 
   resources :users
 
