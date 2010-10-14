@@ -1,0 +1,19 @@
+<% form_for(@column) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :page_id %><br />
+    <%= f.text_field :page_id %>
+  </div>
+  <div class="field">
+    <%= f.label :width %><br />
+    <%= f.text_field :width %>
+  </div>
+  <div class="field">
+    <%= f.label :cardinality %><br />
+    <%= f.text_field :cardinality %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
