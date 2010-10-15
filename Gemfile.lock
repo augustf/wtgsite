@@ -1,9 +1,10 @@
 GIT
   remote: git://github.com/galetahub/rails-ckeditor.git
-  revision: 2c7bcd1199daf4cfa29f36c6d12253f708588461
+  revision: ffb4026143829b1c78bb01a7ce426bc1c13f0057
   branch: rails3
   specs:
-    ckeditor (3.4.0.pre)
+    ckeditor (3.4.2.pre)
+      mime-types (>= 1.16)
 
 GEM
   specs:
@@ -41,16 +42,16 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.4.1)
-    mail (2.2.5)
+    mail (2.2.7)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
     polyglot (0.3.1)
     rack (1.2.1)
-    rack-mount (0.6.12)
+    rack-mount (0.6.13)
       rack (>= 1.0.0)
-    rack-test (0.5.4)
+    rack-test (0.5.6)
       rack (>= 1.0)
     rails (3.0.0)
       actionmailer (= 3.0.0)
@@ -67,7 +68,7 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     ruby-mysql (2.9.3)
-    thor (0.14.0)
+    thor (0.14.3)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)

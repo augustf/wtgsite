@@ -1,34 +1,25 @@
 class ColumnsController < ApplicationController
+  respond_to :html, :xml, :json
+  
   # GET /columns
   # GET /columns.xml
   def index
     @columns = Column.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @columns }
-    end
+    respond_with(@columns)
   end
 
   # GET /columns/1
   # GET /columns/1.xml
   def show
     @column = Column.find(params[:id])
-
-    respond_to do |format|
-      format.html {render :layout => false} # show.html.erb (without any layout)
-      format.xml  { render :xml => @column }
-    end
+    respond_with(@column)
   end
 
   # GET /columns/new
   # GET /columns/new.xml
   def new
     @column = Column.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @column }
-    end
+    respond_with(@column)
   end
 
   # GET /columns/1/edit
@@ -40,42 +31,22 @@ class ColumnsController < ApplicationController
   # POST /columns.xml
   def create
     @column = Column.new(params[:column])
-    respond_to do |format|
-      if @column.save
-        format.html { redirect_to(@column, :notice => 'Blog post was successfully created.') }
-        format.xml  { render :xml => @column, :status => :created, :location => @column }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @column.errors, :status => :unprocessable_entity }
-      end
-    end
+    flash[:notice] = "Column successfully created" if @column.save
+    respond_with(@column)
   end
 
   # PUT /columns/1
   # PUT /columns/1.xml
   def update
     @column = Column.find(params[:id])
-
-    respond_to do |format|
-      if @column.update_attributes(params[:column])
-        format.html { redirect_to(@column, :notice => 'Blog post was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @column.errors, :status => :unprocessable_entity }
-      end
-    end
+    @column.update_attributes(params[:column])
+    respond_with(@column)
   end
 
   # DELETE /columns/1
   # DELETE /columns/1.xml
   def destroy
-    @column = Column.find(params[:id])
-    @column.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(columns_url) }
-      format.xml  { head :ok }
-    end
+    @column = Column.find(params[:id]).destroy
+    respond_with(@column)
   end
 end
