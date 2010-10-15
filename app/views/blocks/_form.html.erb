@@ -11,7 +11,8 @@
   </div>
   <div class="field">
     <%= f.label :html %><br />
-    <%= f.text_area :html %>
+    <%#= f.text_area :html %>
+    <%= ckeditor_textarea("block", "html", :width => '50%', :height => '200px') %>
   </div>
   <div class="field">
     <%= f.label :position %><br />

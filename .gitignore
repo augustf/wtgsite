@@ -9,3 +9,4 @@ config/initializers/paperclip.rb
 config/initializers/setup_mail.rb
 app/mailers/contact_mailer.rb
 config/initializers/secret_token.rb
+public/ckeditor_assets/
