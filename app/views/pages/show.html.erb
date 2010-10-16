@@ -16,6 +16,7 @@
 
 <% if current_user %>
 <ul>
-	<li><%= link_to "Edit", edit_page_path(@page) %></li>
+	<li><%= link_to "Add Column", new_page_column_path(@page) %></li>
+	<li><%= link_to "Edit Details", edit_page_path(@page) %></li>
 </ul>
 <% end %>

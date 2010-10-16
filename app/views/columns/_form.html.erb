@@ -1,10 +1,6 @@
-<% form_for(@column) do |f| %>
+<% form_for([@page, @column]) do |f| %>
   <%= f.error_messages %>
 
-  <div class="field">
-    <%= f.label :page_id %><br />
-    <%= f.text_field :page_id %>
-  </div>
   <div class="field">
     <%= f.label :width %><br />
     <%= f.text_field :width %>

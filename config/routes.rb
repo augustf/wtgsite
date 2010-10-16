@@ -22,7 +22,9 @@ Wtgsite::Application.routes.draw do |map|
 
   resources :users
 
-  resources :pages
+  resources :pages do
+    resources :columns
+  end
 
 	match 'frontpage' => 'frontpage#index'
 	

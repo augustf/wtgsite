@@ -18,7 +18,8 @@ class ColumnsController < ApplicationController
   # GET /columns/new
   # GET /columns/new.xml
   def new
-    @column = Column.new
+    @page = Page.find(params[:page_id]) 
+    @column = @page.columns.new
     respond_with(@column)
   end
 
@@ -30,7 +31,8 @@ class ColumnsController < ApplicationController
   # POST /columns
   # POST /columns.xml
   def create
-    @column = Column.new(params[:column])
+    @page = Page.find(params[:page_id])
+    @column = @page.columns.new(params[:column])
     flash[:notice] = "Column successfully created" if @column.save
     respond_with(@column)
   end
