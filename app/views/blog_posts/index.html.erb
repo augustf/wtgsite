@@ -2,16 +2,17 @@
 <% @blog_posts.each do |blog_post| %>
 <section>
 	<hgroup>
-		<h1><%= blog_post.title %></h1>
+		<h1><%= link_to blog_post.title, :action => 'show', :id => blog_post %></h1>
 		<h2>By <%= link_to User.find(blog_post.user_id).name, user_path(blog_post.user_id) %></h2>
 	</hgroup>
 	<p>
 		<% body = snippet(blog_post.body) %>
-		<%= body %>
+		<%=raw body %>
 		<% if truncated?(body) %>&nbsp;<%= link_to('[Read More]', :action => 'show', :id => blog_post) %><% end %>
 	</p>
 </section>
 <% end %>
+
 <% if current_user %>
 <ul>
 	<li><%= link_to "New Post", new_blog_post_path %></li>

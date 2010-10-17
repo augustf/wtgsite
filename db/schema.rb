@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017180701) do
+ActiveRecord::Schema.define(:version => 20101017185303) do
 
   create_table "blocks", :force => true do |t|
     t.integer  "image_id"
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20101017180701) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "category_id"
-    t.string   "slug"
+    t.integer  "blog_category_id"
+    t.string   "cached_slug"
   end
 
   create_table "categories", :force => true do |t|
@@ -115,6 +115,18 @@ ActiveRecord::Schema.define(:version => 20101017180701) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "slugs", :force => true do |t|
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "user_sessions", :force => true do |t|
     t.datetime "created_at"

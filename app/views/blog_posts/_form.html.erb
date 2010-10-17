@@ -6,8 +6,12 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <%= f.label :blog_category_id %><br />
+  <%= f.select :blog_category_id, BlogCategory.all.collect {|c| [ c.name, c.id ] }  %>
+  </div> 
+  <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%= ckeditor_textarea("blog_post", "body", :width => '50%', :height => '200px') %>
   </div>
   <div class="actions">
     <%= f.submit %>
