@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017185303) do
+ActiveRecord::Schema.define(:version => 20101017191038) do
 
   create_table "blocks", :force => true do |t|
     t.integer  "image_id"
@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(:version => 20101017185303) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
-    t.string   "slug"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -104,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20101017185303) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "category_id"
+    t.string   "cached_slug"
   end
 
   create_table "sessions", :force => true do |t|
