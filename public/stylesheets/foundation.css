@@ -1,0 +1,20 @@
+/* Global Reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,section,article,hgroup{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,b,th,var,optgroup{font-style:inherit;font-weight:inherit;}
+del,ins{text-decoration:none;}
+li{list-style:none;}
+caption,th{text-align:left;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:baseline;}
+sub{vertical-align:baseline;}
+b, strong { font-weight:bold; }
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+input,button,textarea,select{*font-size:100%;}
+small { font-size:0.6em; }
+
+/* Page Display */
+section { float:left; }
+section.admin { border:solid 1px red; }

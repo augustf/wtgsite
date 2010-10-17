@@ -1,19 +1,19 @@
 <h1><%= @page.title %></h1>
 <%= image_tag(@page.image.url(:medium), :alt => '') unless @page.image.nil? %>
+<div style="clear:both;"></div>
 <% @columns.each do |col| %>
-<section>
-	<%= col.blocks.each do |block| %>
+<section<% if current_user %> class="admin"<% end %> style="width:<%= col.width %>%;<% if col.is_clear? %>clear:both;<% end %>">
+	<% col.blocks.each do |block| %>
 	<div class="block">
 		<hgroup>
 			<h1><%= block.name %></h1>
 		</hgroup>
-		<%#= image_tag(block.image.url(:medium), :alt => '') unless block.image.nil? %>
-		<%= block.html %>
+		<%=raw block.html %>
 	</div>
 	<% end %>
 </section>
 <% end %>
-
+<div style="clear:both;"></div>
 <% if current_user %>
 <ul>
 	<li><%= link_to "Add Column", new_page_column_path(@page) %></li>
