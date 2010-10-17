@@ -2,6 +2,8 @@
 
 <hgroup>
 	<h1><%= @blog_post.title %></h1>
+	<h2>By <%= link_to @blog_post.user.name, @blog_post.user %></h2>
+	<h3><% link_to "#comments" do %><%= @blog_post.blog_comments.count %> Comments<% end %></h3>
 	<% if current_user %>
 	<h2><%= link_to 'Edit', edit_blog_post_path(@blog_post) %></h2>
 	<% end %>
@@ -9,7 +11,7 @@
   
 <p><%=raw @blog_post.body %></p>
 
-<h2>Comments:</h2>
+<h2 id="comments">Comments:</h2>
 <% for comment in @blog_comments %>
   By <%= comment.name %> (<%= comment.email %>) on <%= comment.created_at.strftime('%m/%d/%Y') %> 
     from <%= link_to comment.website, comment.website %>
@@ -17,4 +19,3 @@
 <% end %>
 
 <%= render :partial => "blog_comments/new", :locals => {:post => @blog_post, :comment => @new_blog_comment } %>
-<%#= link_to "New Comment", new_blog_comment_path(:blog_post_id => @blog_post.id) %>
