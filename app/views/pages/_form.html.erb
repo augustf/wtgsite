@@ -3,6 +3,8 @@
 
 	<fieldset>
 		<ol>
+		  <li></li><%= f.label :category_id %><br />
+      <%= f.select :category_id, Category.all.collect {|c| [ c.name, c.id ] }  %></li>
 			<li><%= f.label :title %> <%= f.text_field :title %></li>
 			<li><%= f.label :image %> <%= f.file_field :image -%></li>
 		</ol>
