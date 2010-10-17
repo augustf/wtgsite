@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   respond_to :html, :xml, :json
+  before_filter :require_admin, :only => [:new, :edit, :create, :update, :destroy]   
     
   # GET /pages
   # GET /pages.xml
