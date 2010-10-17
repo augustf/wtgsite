@@ -1,8 +1,0 @@
-<% if current_user %>
-<p>Logged in as <%= current_user.username %></p>
-<ul>
-	<li><%= link_to "Logout", logout_path %></li>
-	<li><%= link_to "Manage Users", users_path %></li>
-	<li><%= link_to "Site Pages", pages_path %></li>
-</ul>
-<% end %>
