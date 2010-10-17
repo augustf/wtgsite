@@ -47,7 +47,8 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.xml
   def destroy
-    @page = Page.find(params[:id]).destroy
+    @page = Page.find(params[:id])
+    @page.destroy
     respond_with(@page)
   end
 end
