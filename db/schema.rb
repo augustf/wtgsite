@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017221948) do
+ActiveRecord::Schema.define(:version => 20101017223829) do
 
   create_table "blocks", :force => true do |t|
     t.string   "name"
@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(:version => 20101017221948) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "moderated",    :default => false, :null => false
+    t.boolean  "moderated",       :default => false, :null => false
     t.string   "name"
     t.string   "email"
     t.string   "website"
+    t.boolean  "posted_by_admin", :default => false, :null => false
   end
 
   create_table "blog_posts", :force => true do |t|

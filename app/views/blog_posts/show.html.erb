@@ -14,7 +14,6 @@
 <h2 id="comments">Comments:</h2>
 
 <% if current_user %>
-	<%= link_to "Add Admin Comment", new_blog_post_blog_comment_path(@blog_post) %>
 	<% if @unapproved_comments.count == 1 %>
 	<p>There is currently 1 unapproved comment for this post. <%= link_to "Manage it.", blog_post_blog_comments_path(@blog_post) %></p>
 	<% elsif @unapproved_comments.count > 1 %>
@@ -26,6 +25,13 @@
   By <%= comment.name %> (<%= comment.email %>) on <%= comment.created_at.strftime('%m/%d/%Y') %> 
     from <%= link_to comment.website, comment.website %>
   <p><%= comment.body %></p>
+  <p>Admin Status: <%= comment.posted_by_admin? %></p>
 <% end %>
 
-<%= render :partial => "blog_comments/new", :locals => {:post => @blog_post, :comment => @new_blog_comment } %>
+<% if current_user %>
+	<% admin_value = current_user.is_admin %>
+<% else %>
+	<% admin_value = 0 %>
+<% end %>
+
+<%= render :partial => "blog_comments/new", :locals => { :post => @blog_post, :comment => @new_blog_comment, :posted_by_admin => admin_value } %>

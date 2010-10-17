@@ -1,7 +1,6 @@
 class BlogCommentsController < ApplicationController
   respond_to :html, :xml, :json	
-  before_filter :require_admin, :only => [:moderate, :edit, :destroy]
-  before_filter :require_user, :only => [:create, :new]
+  before_filter :require_admin, :only => [:moderate, :new, :edit, :destroy]
   
   def moderate
     @blog_comment = BlogComment.find(params[:id])
@@ -16,14 +15,6 @@ class BlogCommentsController < ApplicationController
     @blog_post = BlogPost.find_by_cached_slug(params[:blog_post_id])
     @blog_comments = @blog_post.blog_comments
     respond_with(@blog_comments)
-  end
-
-  # THIS IS ONLY USED BY ADMINS!
-  def new
-     @blog_post = BlogPost.find_by_cached_slug(params[:blog_post_id])
-     @blog_comment = @blog_post.blog_comments.new
-     @blog_comment.blog_post_id = params[:blog_post_id]
-     respond_with(@blog_comment)
   end
    
   # GET /blog_comments/1

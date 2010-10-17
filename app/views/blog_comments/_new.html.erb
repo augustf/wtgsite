@@ -1,1 +1,44 @@
-<%= render :partial => 'form', :locals => { :post => post, :comment => comment } %>
+<%= form_for([post, comment]) do |f| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this blog comment from being saved:</h2>
+
+      <ul>
+      	<% comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      	<% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+
+  <% if !current_user %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>  
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <% else %>
+  <%= hidden_field(:name, current_user.name) %>
+  <%= hidden_field(:email, current_user.email) %>
+  <%= hidden_field(:website, current_user.website) %>
+  <% end %>
+
+  <%= hidden_field(:posted_by_admin, posted_by_admin) %>
+
+  Are you human? <%=raw recaptcha_tags %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
