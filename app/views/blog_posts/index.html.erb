@@ -16,7 +16,7 @@
 	<hgroup>
 		<h1><%= link_to blog_post.title, blog_post %></h1>
 		<h2>By <%= link_to blog_post.user.name, blog_post.user %></h2>
-		<h3><% link_to blog_post_path(blog_post, :anchor => "comments") do %><%= blog_post.blog_comments.count %> Comments<% end %></h3>
+		<h3><% link_to blog_post_path(blog_post, :anchor => "comments") do %><%= blog_post.blog_comments.where(:moderated => 1).count %> Comments<% end %></h3>
 	</hgroup>
 	<p>
 		<% body = snippet(blog_post.body) %>
