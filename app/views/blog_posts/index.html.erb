@@ -1,13 +1,13 @@
 <hgroup>
 	<h1>Blog</h1>
-	<% if current_user %>
+	<% if current_user.is_admin? %>
 	<h2><%= link_to "New Post", new_blog_post_path %> | <%= link_to "New Blog Category", new_blog_category_path %></h2>
 	<% end %>
 </hgroup>
 <h2>Categories</h2>
 <ul>
 	<% @blog_categories.each do |blog_cat| %>
-	<li><%= blog_cat.name %><% if current_user %> (<%= link_to "Edit", edit_blog_category_path(blog_cat) %>, <%= link_to "Delete", blog_cat, :confirm => 'Are you sure you want to delete this blog category?', :method => :delete %>)<% end %></li>
+	<li><%= blog_cat.name %><% if current_user.is_admin? %> (<%= link_to "Edit", edit_blog_category_path(blog_cat) %>, <%= link_to "Delete", blog_cat, :confirm => 'Are you sure you want to delete this blog category?', :method => :delete %>)<% end %></li>
 	<% end %>
 </ul>
 <h2>Posts</h2>

@@ -1,6 +1,6 @@
 <hgroup>
 	<h1><%= @page.title %></h1>
-	<% if current_user %>
+	<% if current_user.is_admin? %>
 	<h2><%= link_to "Add Column", new_page_column_path(@page) %> | <%= link_to "Edit Details", edit_page_path(@page) %></h2>
 	<% end %>
 </hgroup>
