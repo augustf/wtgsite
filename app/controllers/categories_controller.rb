@@ -48,4 +48,5 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id]).destroy
     respond_with(@category)
+  end
 end
