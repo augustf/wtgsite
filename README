@@ -10,7 +10,9 @@ Installation:
 	5) Run "git submodule update" 
 	6) Run "bundle install"
 	7) Run "rake db:migrate"
-	8) Visit http://www.google.com/recaptcha, request reCaptcha keys using a Google account, and copy them into a file config/initializers/recaptcha.rb that follows the structure of the sample file, config/initializers/recaptcha.rb.sample.
+	8) Visit http://www.google.com/recaptcha, request reCaptcha keys using a Google account, and copy 
+	   them into a file config/initializers/recaptcha.rb that follows the structure of the sample file,
+	   config/initializers/recaptcha.rb.sample.
 
 
 HTML5 Element Hierarchy:
