@@ -11,3 +11,5 @@ gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch
 gem "acts_as_list"
 
 gem "friendly_id", "~> 3.1"
+
+gem 'will_paginate', '~> 3.0.beta'

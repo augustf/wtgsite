@@ -76,6 +76,7 @@ GEM
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
@@ -86,3 +87,4 @@ DEPENDENCIES
   friendly_id (~> 3.1)
   rails (= 3.0.0)
   ruby-mysql
+  will_paginate (~> 3.0.beta)

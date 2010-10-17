@@ -3,7 +3,8 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts
   # GET /blog_posts.xml
   def index
-    @blog_posts = BlogPost.all
+    #@blog_posts = BlogPost.all
+    @blog_posts = BlogPost.paginate :page => params[:page], :order => 'updated_at DESC'
     @blog_categories = BlogCategory.all
     respond_with(@blog_posts)
   end
