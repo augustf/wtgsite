@@ -1,0 +1,23 @@
+<h1>Listing blog_categories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @blog_categories.each do |blog_category| %>
+  <tr>
+    <td><%= blog_category.name %></td>
+    <td><%= link_to 'Show', blog_category %></td>
+    <td><%= link_to 'Edit', edit_blog_category_path(blog_category) %></td>
+    <td><%= link_to 'Destroy', blog_category, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Blog category', new_blog_category_path %>
