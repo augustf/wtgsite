@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   respond_to :html, :xml, :json
   before_filter :require_no_user, :only => [:new, :create, :index]
-  before_filter :require_user, :only => [:show, :edit, :update, :destroy]
+  before_filter :require_user, :only => [:show, :edit, :update, :destroy] 
   
   # GET /users
   # GET /users.xml
