@@ -6,21 +6,6 @@
 </hgroup>
 <%= image_tag(@page.image.url(:medium), :alt => '') unless @page.image.nil? %>
 <div style="clear:both;"></div>
-<% @columns.each do |col| %>
-<section<% if current_user %> class="admin"<% end %> style="width:<%= col.width %>%;<% if col.is_clear? %>clear:both;<% end %>">
-	<% if col.blocks.size == 0 %>
-		<%= link_to "Delete Column", col, :confirm => 'Are you sure you want to delete this column?', :method => :delete %>
-	<% else %>
-		<% col.blocks.each do |block| %>
-		<div class="block">
-			<hgroup>
-				<h1><%= block.name %></h1>
-			</hgroup>
-			<%=raw block.html %>
-		</div>
-		<% end %>
-	<% end %>
-</section>
-<% end %>
+<%= render @columns %>
 <div style="clear:both;"></div>
 

@@ -34,7 +34,7 @@ class ColumnsController < ApplicationController
     @page = Page.find(params[:page_id])
     @column = @page.columns.new(params[:column])
     flash[:notice] = "Column successfully created" if @column.save
-    respond_with(@column)
+    respond_with(@page)
   end
 
   # PUT /columns/1
@@ -48,7 +48,9 @@ class ColumnsController < ApplicationController
   # DELETE /columns/1
   # DELETE /columns/1.xml
   def destroy
-    @column = Column.find(params[:id]).destroy
-    respond_with(@column)
+    @column = Column.find(params[:id])
+    @page = @column.page
+    @column.destroy
+    respond_with(@page)
   end
 end

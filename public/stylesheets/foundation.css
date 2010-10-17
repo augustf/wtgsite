@@ -18,3 +18,4 @@ small { font-size:0.6em; }
 /* Page Display */
 section { float:left; }
 section.admin { border:solid 1px red; }
+section.admin div.block { border:solid 2px blue; }
