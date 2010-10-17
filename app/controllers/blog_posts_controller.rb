@@ -4,6 +4,7 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts.xml
   def index
     @blog_posts = BlogPost.all
+    @blog_categories = BlogCategory.all
     respond_with(@blog_posts)
   end
 

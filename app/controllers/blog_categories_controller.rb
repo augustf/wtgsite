@@ -32,7 +32,7 @@ class BlogCategoriesController < ApplicationController
   def create
     @blog_category = BlogCategory.new(params[:blog_category])
     flash[:notice] = "Blog Category successfully created" if @blog_category.save
-    respond_with(@blog_category)
+    redirect_to(blog_posts_path)
   end
 
   # PUT /blog_categories/1
@@ -40,13 +40,13 @@ class BlogCategoriesController < ApplicationController
   def update
     @blog_category = BlogCategory.find(params[:id])
     @blog_category.update_attributes(params[:blog_category])
-    respond_with(@blog_category)
+    redirect_to(blog_posts_path)
   end
 
   # DELETE /blog_categories/1
   # DELETE /blog_categories/1.xml
   def destroy
     @blog_category = BlogCategory.find(params[:id]).destroy
-    respond_with(@blog_category)
+    redirect_to(blog_posts_path)
   end
 end
