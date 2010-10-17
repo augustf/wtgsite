@@ -16,6 +16,14 @@ class BlogCommentsController < ApplicationController
     respond_with(@blog_comments)
   end
 
+  # THIS IS ONLY USED BY ADMINS!
+  def new
+     @blog_post = BlogPost.find_by_cached_slug(params[:blog_post_id])
+     @blog_comment = @blog_post.blog_comments.new
+     @blog_comment.blog_post_id = params[:blog_post_id]
+     respond_with(@blog_comment)
+  end
+   
   # GET /blog_comments/1
   # GET /blog_comments/1.xml
   def show
