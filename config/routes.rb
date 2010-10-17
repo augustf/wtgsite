@@ -21,10 +21,10 @@ Wtgsite::Application.routes.draw do |map|
 	end
 
   resources :blog_posts do
-    resources :blog_comments
+    resources :blog_comments, :member => { :moderate => :get }
   end
   
-  resources :blog_comments
+  resources :blog_comments, :member => { :moderate => :get }
 
   resources :user_sessions
 

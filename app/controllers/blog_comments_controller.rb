@@ -1,5 +1,13 @@
 class BlogCommentsController < ApplicationController
   respond_to :html, :xml, :json	
+  
+  def moderate
+    @blog_comment = BlogComment.find(params[:id])
+    @blog_comment.moderated = !(@blog_comment.moderated)
+    @blog_comment.save
+    respond_with(@blog_comment)
+  end
+  
   # GET /blog_comments
   # GET /blog_comments.xml
   def index
