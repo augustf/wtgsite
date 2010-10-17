@@ -1,4 +1,9 @@
-<h1>Blog</h1>
+<hgroup>
+	<h1>Blog</h1>
+	<% if current_user %>
+	<h2><%= link_to "New Post", new_blog_post_path %> | <%= link_to "New Blog Category", new_blog_category_path %></h2>
+	<% end %>
+</hgroup>
 <% @blog_posts.each do |blog_post| %>
 <section>
 	<hgroup>
@@ -11,10 +16,4 @@
 		<% if truncated?(body) %>&nbsp;<%= link_to('[Read More]', :action => 'show', :id => blog_post) %><% end %>
 	</p>
 </section>
-<% end %>
-
-<% if current_user %>
-<ul>
-	<li><%= link_to "New Post", new_blog_post_path %></li>
-</ul>
 <% end %>

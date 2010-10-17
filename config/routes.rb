@@ -20,7 +20,9 @@ Wtgsite::Application.routes.draw do |map|
 	  resources :blocks
 	end
 
-  resources :blog_posts
+  resources :blog_posts do
+    resources :blog_comments
+  end
   
   resources :blog_comments
 

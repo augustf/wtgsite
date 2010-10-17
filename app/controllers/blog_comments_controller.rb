@@ -16,6 +16,7 @@ class BlogCommentsController < ApplicationController
 
   # GET /blog_comments/new
   # GET /blog_comments/new.xml
+  # NOT USING ANYMORE!
   def new
     @blog_comment = BlogComment.new
     @blog_comment.blog_post_id = params[:blog_post_id]
@@ -30,10 +31,12 @@ class BlogCommentsController < ApplicationController
   # POST /blog_comments
   # POST /blog_comments.xml
   def create
-    @blog_comment = BlogComment.new(params[:blog_comment])
-		@blog_comment.user_id = current_user.id #set author of blog post correctly
+    @blog_post = BlogPost.find_by_cached_slug(params[:blog_post_id])
+    @blog_comment = @blog_post.blog_comments.new(params[:blog_comment])
+    @blog_comment.blog_post_id = @blog_post
+		#@blog_comment.user_id = current_user.id #set author of blog post correctly
     flash[:notice] = "Blog Post successfully created" if @blog_comment.save
-    respond_with(@blog_comment)
+    respond_with(@blog_post)
   end
 
   # PUT /blog_comments/1
