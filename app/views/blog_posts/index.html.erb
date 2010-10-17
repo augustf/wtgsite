@@ -14,8 +14,9 @@
 <% @blog_posts.each do |blog_post| %>
 <section>
 	<hgroup>
-		<h1><%= link_to blog_post.title, :action => 'show', :id => blog_post %></h1>
-		<h2>By <%= link_to User.find(blog_post.user_id).name, user_path(blog_post.user_id) %></h2>
+		<h1><%= link_to blog_post.title, blog_post %></h1>
+		<h2>By <%= link_to blog_post.user.name, blog_post.user %></h2>
+		<h3><% link_to blog_post_path(blog_post, :anchor => "comments") do %><%= blog_post.blog_comments.count %> Comments<% end %></h3>
 	</hgroup>
 	<p>
 		<% body = snippet(blog_post.body) %>
