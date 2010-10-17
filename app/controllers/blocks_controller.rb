@@ -18,7 +18,8 @@ class BlocksController < ApplicationController
   # GET /blocks/new
   # GET /blocks/new.xml
   def new
-    @block = Block.new
+    @column = Column.find(params[:column_id]) 
+    @block = @column.blocks.new
     respond_with(@block)
   end
 
@@ -30,7 +31,8 @@ class BlocksController < ApplicationController
   # POST /blocks
   # POST /blocks.xml
   def create
-    @block = Block.new(params[:block])
+    @column = Column.find(params[:column_id])
+    @block = @column.blocks.new(params[:block])
     flash[:notice] = "Block successfully created" if @block.save
     respond_with(@block)
   end
@@ -46,8 +48,10 @@ class BlocksController < ApplicationController
   # DELETE /blocks/1
   # DELETE /blocks/1.xml
   def destroy
-    @block = Block.find(params[:id]).destroy
-    respond_with(@block)
+    @block = Block.find(params[:id])
+    @page = @block.column.page 
+    @block.destroy
+    respond_with(@page)
   end
 
 end

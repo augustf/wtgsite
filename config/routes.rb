@@ -14,7 +14,9 @@ Wtgsite::Application.routes.draw do |map|
 	
 	resources :blocks
 	
-	resources :columns
+	resources :columns do
+	  resources :blocks
+	end
 
   resources :blog_posts
   

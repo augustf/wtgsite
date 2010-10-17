@@ -1,4 +1,4 @@
-<% form_for(@block) do |f| %>
+<% form_for([@column, @block]) do |f| %>
   <%= f.error_messages %>
 
   <div class="field">
@@ -17,11 +17,7 @@
   <div class="field">
     <%= f.label :position %><br />
     <%= f.text_field :position %>
-  </div>  
-  <div class="field">
-    <%= f.label :column_id %><br />
-    <%= f.text_field :column_id %>
-  </div>   
+  </div>    
   <div class="actions">
     <%= f.submit %>
   </div>
