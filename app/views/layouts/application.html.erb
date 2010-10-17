@@ -27,14 +27,19 @@
 		<p id="flashblock"><%= flash[:notice] %></p>
 	<% end %>
 	
+	<% # if this is pages/show/:id and a partial exists for the category, load that; otherwise, yield normally: %>
 	<% if controller.controller_name == "pages" && controller.action_name == "show" %>
-    <%if FileTest.exists?(RAILS_ROOT + '/app/views/category_includes/' + '_' + Category.find(@page.category_id).name.downcase + '.html.erb') %>
-      Something something dark side...
-    <% end %>
+    	<% if FileTest.exists?(RAILS_ROOT + '/app/views/category_includes/' + '_' + @page.category.name.downcase + '.html.erb') %>
+			<%= render :partial => 'category_includes/' + @page.category.name.downcase %>
+	  	<% else %>
+			<article>
+		  		<%= yield %>
+	  		</article>
+		<% end %>
 	<% else %>
-	  <article>
-		  <%= yield %>
-	  </article>
+	  	<article>
+		  	<%= yield %>
+	  	</article>
 	<% end %>
 	
 	<footer>
