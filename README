@@ -1,6 +1,6 @@
-Prerequisites: Imagemagick, rmagick, Authlogic, ckeditor, MySQL, Rails 3
+Prerequisites: Imagemagick, rmagick, Authlogic, ckeditor, MySQL, Rails 3, acts_as_list, friendly_id, will_paginate
 
-Uses: Paperclip for image attachments, ckeditor-rails for WYSIWYG editing
+Uses: Paperclip for image attachments, ckeditor-rails for WYSIWYG editing, recaptcha for comment validation, dynamic_form
 
 Installation:
 	1) Clone from git repository
