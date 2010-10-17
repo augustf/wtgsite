@@ -3,13 +3,14 @@ Prerequisites: Imagemagick, rmagick, Authlogic, ckeditor, MySQL, Rails 3
 Uses: Paperclip for image attachments, ckeditor-rails for WYSIWYG editing
 
 Installation:
-Clone from git repository
-Copy config/database.yml.sample to config/database.yml and complete it
-Update mailer settings in config/initializers/setup_mail.rb and app/mailers/contact_mailer.rb
-Run "git submodule init"
-Run "git submodule update" 
-Run "bundle install"
-Run "rake db:migrate"
+	1) Clone from git repository
+	2) Copy config/database.yml.sample to config/database.yml and complete it
+	3) Update mailer settings in config/initializers/setup_mail.rb and app/mailers/contact_mailer.rb
+	4) Run "git submodule init"
+	5) Run "git submodule update" 
+	6) Run "bundle install"
+	7) Run "rake db:migrate"
+	8) Visit http://www.google.com/recaptcha, request reCaptcha keys using a Google account, and copy them into a file config/initializers/recaptcha.rb that follows the structure of the sample file, config/initializers/recaptcha.rb.sample.
 
 
 HTML5 Element Hierarchy:
