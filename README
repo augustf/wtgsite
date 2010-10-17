@@ -5,7 +5,9 @@ Uses: Paperclip for image attachments, ckeditor-rails for WYSIWYG editing
 Installation:
 Clone from git repository
 Copy config/database.yml.sample to config/database.yml and complete it
-Update mailer settings in config/initializers/setup_mail.rb and app/mailers/contact_mailer.rb 
+Update mailer settings in config/initializers/setup_mail.rb and app/mailers/contact_mailer.rb
+Run "git submodule init"
+Run "git submodule update" 
 Run "bundle install"
 Run "rake db:migrate"
 
