@@ -1,22 +1,26 @@
-<h1><%= @page.title %></h1>
+<hgroup>
+	<h1><%= @page.title %></h1>
+	<% if current_user %>
+	<h2><%= link_to "Add Column", new_page_column_path(@page) %> | <%= link_to "Edit Details", edit_page_path(@page) %></h2>
+	<% end %>
+</hgroup>
 <%= image_tag(@page.image.url(:medium), :alt => '') unless @page.image.nil? %>
 <div style="clear:both;"></div>
 <% @columns.each do |col| %>
 <section<% if current_user %> class="admin"<% end %> style="width:<%= col.width %>%;<% if col.is_clear? %>clear:both;<% end %>">
-	<% col.blocks.each do |block| %>
-	<div class="block">
-		<hgroup>
-			<h1><%= block.name %></h1>
-		</hgroup>
-		<%=raw block.html %>
-	</div>
+	<% if col.blocks.size == 0 %>
+		<%= link_to "Delete Column", col, :confirm => 'Are you sure you want to delete this column?', :method => :delete %>
+	<% else %>
+		<% col.blocks.each do |block| %>
+		<div class="block">
+			<hgroup>
+				<h1><%= block.name %></h1>
+			</hgroup>
+			<%=raw block.html %>
+		</div>
+		<% end %>
 	<% end %>
 </section>
 <% end %>
 <div style="clear:both;"></div>
-<% if current_user %>
-<ul>
-	<li><%= link_to "Add Column", new_page_column_path(@page) %></li>
-	<li><%= link_to "Edit Details", edit_page_path(@page) %></li>
-</ul>
-<% end %>
+

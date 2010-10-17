@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= controller.controller_name.titleize %> - Our Website</title>
-  <%= javascript_include_tag :defaults %>
+	<title><%= controller.controller_name.titleize %> - Our Website</title>
+	<%= javascript_include_tag :defaults %>
 	<%= javascript_include_tag :ckeditor %>
 	<%= stylesheet_link_tag 'foundation' %>
 	<%= csrf_meta_tag %>
-	
+
 	<!--[if lt IE 9]>
 	<%= javascript_include_tag "html5.js" %>
 	<![endif]-->
@@ -14,40 +14,40 @@
 <body>
 	<header>
 		<% if current_user %>
-		  <p>Logged in as <%= current_user.username %></p>
-		  <ul>
-			  <li><%= link_to "Logout", logout_path %></li>
-			  <li><%= link_to "Manage Users", users_path %></li>
-			  <li><%= link_to "Site Pages", pages_path %></li>
-		  </ul>
+		<p>Logged in as <%= current_user.username %></p>
+		<ul>
+			<li><%= link_to "Logout", logout_path %></li>
+			<li><%= link_to "Manage Users", users_path %></li>
+			<li><%= link_to "Site Pages", pages_path %></li>
+		</ul>
 		<% end %>
 		<%= link_to image_tag("your_logo_here.png", :alt => "The Logo", :title => "Home"), frontpage_path %>
 	</header>
 	<% if flash[:notice] %>
-		<p id="flashblock"><%= flash[:notice] %></p>
+	<p id="flashblock"><%= flash[:notice] %></p>
 	<% end %>
 	
 	<% # if this is pages/show/:id and a partial exists for the category, load that; otherwise, yield normally: %>
 	<% if controller.controller_name == "pages" && controller.action_name == "show" %>
     	<% if FileTest.exists?(RAILS_ROOT + '/app/views/category_includes/' + '_' + @page.category.name.downcase + '.html.erb') %>
-			<%= render :partial => 'category_includes/' + @page.category.name.downcase %>
+		<%= render :partial => 'category_includes/' + @page.category.name.downcase %>
 	  	<% else %>
-			<article>
-		  		<%= yield %>
-	  		</article>
+		<article>
+	  		<%= yield %>
+  		</article>
 		<% end %>
 	<% else %>
-	  	<article>
-		  	<%= yield %>
-	  	</article>
+  	<article>
+	  	<%= yield %>
+  	</article>
 	<% end %>
 	
 	<footer>
 		<% if !current_user %>
-		  <ul>
-			  <li><%= link_to "Register", new_user_path %></li>
-			  <li><%= link_to "Login", login_path %></li>
-		  </ul>
+		<ul>
+			<li><%= link_to "Register", new_user_path %></li>
+			<li><%= link_to "Login", login_path %></li>
+		</ul>
 		<% end %>
 	</footer>
 </body>
