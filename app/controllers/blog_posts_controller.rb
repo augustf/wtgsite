@@ -1,5 +1,7 @@
 class BlogPostsController < ApplicationController
   respond_to :html, :xml, :json	
+  before_filter :require_admin, :only => [:new, :edit, :create, :update, :destroy] 
+    
   # GET /blog_posts
   # GET /blog_posts.xml
   def index

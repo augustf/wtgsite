@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   respond_to :html, :xml, :json
+  before_filter :require_admin, :only => [:edit, :update, :destroy]   
   	
   # GET /contacts
   # GET /contacts.xml

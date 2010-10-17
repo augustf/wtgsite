@@ -11,3 +11,5 @@
 	<li><%= link_to "Blog", blog_posts_path %></li>
 	<li><%= link_to "Users List", users_path %></li>
 </ul>
+
+<%= current_user.is_admin? %>
