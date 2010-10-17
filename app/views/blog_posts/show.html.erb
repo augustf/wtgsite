@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @blog_post.title %>
-</p>
+<h2><%= @blog_post.title %></h2>
+  
+<p><%= @blog_post.body %></p>
 
-<p>
-  <b>Body:</b>
-  <%= @blog_post.body %>
-</p>
+<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> | <%= link_to 'Back', blog_posts_path %>
+<br>
+<h2>Comments:</h2>
+<% for comment in @blog_comments %>
+  By <%= comment.name %> (<%= comment.email %>) on <%= comment.created_at.strftime('%m/%d/%Y') %> 
+    from <%= link_to comment.website, comment.website %>
+  <p><%= comment.body %></p>
+<% end %>
 
-
-<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
-<%= link_to 'Back', blog_posts_path %>
+<%= link_to "New Comment", new_blog_comment_path(:blog_post_id => @blog_post.id) %>

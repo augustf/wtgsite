@@ -11,6 +11,7 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts/1.xml
   def show
     @blog_post = BlogPost.find(params[:id])
+    @blog_comments = @blog_post.blog_comments.where(:moderated => 1)
     respond_with(@blog_post)
   end
 

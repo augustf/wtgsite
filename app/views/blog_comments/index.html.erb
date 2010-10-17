@@ -1,0 +1,23 @@
+<h1>Listing blog_comments</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @blog_comments.each do |blog_comment| %>
+  <tr>
+    <td><%= blog_comment.name %></td>
+    <td><%= link_to 'Show', blog_comment %></td>
+    <td><%= link_to 'Edit', edit_blog_comment_path(blog_comment) %></td>
+    <td><%= link_to 'Destroy', blog_comment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Blog comment', new_blog_comment_path %>
