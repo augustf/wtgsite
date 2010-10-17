@@ -7,6 +7,7 @@ config/database.yml
 public/.htaccess
 config/initializers/paperclip.rb
 config/initializers/setup_mail.rb
+config/initializers/recaptcha.rb
 app/mailers/contact_mailer.rb
 config/initializers/secret_token.rb
 public/ckeditor_assets/
