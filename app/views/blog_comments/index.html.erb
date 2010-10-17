@@ -3,6 +3,9 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Email</th>
+    <th>Website</th>
+    <th>Body</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +14,9 @@
 <% @blog_comments.each do |blog_comment| %>
   <tr>
     <td><%= blog_comment.name %></td>
+    <td><%= blog_comment.email %></td>
+    <td><%= blog_comment.website %></td>
+    <td><%= blog_comment.body %></td>
     <td><%= link_to 'Show', blog_comment %></td>
     <td><%= link_to 'Edit', edit_blog_comment_path(blog_comment) %></td>
     <td><%= link_to 'Destroy', blog_comment, :confirm => 'Are you sure?', :method => :delete %></td>
