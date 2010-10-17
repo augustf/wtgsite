@@ -4,7 +4,6 @@
 	<h2><%= link_to "Add Column", new_page_column_path(@page) %> | <%= link_to "Edit Details", edit_page_path(@page) %></h2>
 	<% end %>
 </hgroup>
-<%= image_tag(@page.image.url(:medium), :alt => '') unless @page.image.nil? %>
 <div style="clear:both;"></div>
 <%= render @columns %>
 <div style="clear:both;"></div>
