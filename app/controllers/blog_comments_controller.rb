@@ -32,7 +32,7 @@ class BlogCommentsController < ApplicationController
   def create
     @blog_comment = BlogComment.new(params[:blog_comment])
 		@blog_comment.user_id = current_user.id #set author of blog post correctly
-    flash[:notice] = "Blog Post successfully created" if @blog_comment.save
+    flash[:notice] = "Blog Post successfully created" if @blog_comment.save && verify_recaptcha()
     respond_with(@blog_comment)
   end
 
