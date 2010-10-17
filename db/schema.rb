@@ -10,10 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017194815) do
+ActiveRecord::Schema.define(:version => 20101017212453) do
 
   create_table "blocks", :force => true do |t|
-    t.integer  "image_id"
     t.string   "name"
     t.text     "html"
     t.datetime "created_at"
@@ -84,13 +83,6 @@ ActiveRecord::Schema.define(:version => 20101017194815) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "images", :force => true do |t|
-    t.string   "image_filenameg"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   create_table "pages", :force => true do |t|
