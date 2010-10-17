@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017004017) do
+ActiveRecord::Schema.define(:version => 20101017014153) do
 
   create_table "blocks", :force => true do |t|
     t.integer  "image_id"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(:version => 20101017004017) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string "name"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -89,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20101017004017) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "category_id"
   end
 
   create_table "sessions", :force => true do |t|

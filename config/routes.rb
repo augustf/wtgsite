@@ -1,5 +1,7 @@
 Wtgsite::Application.routes.draw do |map|
   
+  resources :categories
+
   root :to => "frontpage#index"
 	
 	match "contact", :to => "contacts#new", :as => "contact"
