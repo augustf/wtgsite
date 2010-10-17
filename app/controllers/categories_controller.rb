@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
   # PUT /categories/1.xml
   def update
     @category = Category.find(params[:id])
-    @category(params[:category])
+    @category.update_attributes(params[:category])
     respond_with(@category)
   end
 
