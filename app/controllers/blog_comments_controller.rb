@@ -14,15 +14,6 @@ class BlogCommentsController < ApplicationController
     respond_with(@blog_comment)
   end
 
-  # GET /blog_comments/new
-  # GET /blog_comments/new.xml
-  # NOT USING ANYMORE!
-  def new
-    @blog_comment = BlogComment.new
-    @blog_comment.blog_post_id = params[:blog_post_id]
-    respond_with(@blog_comment)
-  end
-
   # GET /blog_comments/1/edit
   def edit
     @blog_comment = BlogComment.find(params[:id])
