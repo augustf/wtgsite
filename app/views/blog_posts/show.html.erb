@@ -13,10 +13,10 @@
 
 <h2 id="comments">Comments:</h2>
 
-<% if current_user and @unmoderated_comments.count == 1 %>
-<p>There is currently 1 unmoderated comment for this post. <%= link_to "Manage it.", blog_post_blog_comments_path(@blog_post) %></p>
-<% elsif current_user and @unmoderated_comments.count > 1 %>
-<p>There are currently <%= @unmoderated_comments.count %> unmoderated comments for this post. <%= link_to "Manage them.", blog_post_blog_comments_path(@blog_post) %></p>
+<% if current_user and @unapproved_comments.count == 1 %>
+<p>There is currently 1 unapproved comment for this post. <%= link_to "Manage it.", blog_post_blog_comments_path(@blog_post) %></p>
+<% elsif current_user and @unapproved_comments.count > 1 %>
+<p>There are currently <%= @unapproved_comments.count %> unapproved comments for this post. <%= link_to "Manage them.", blog_post_blog_comments_path(@blog_post) %></p>
 <% end %>
 
 <% @approved_comments.each do |comment| %>

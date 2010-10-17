@@ -3,7 +3,8 @@ class BlogCommentsController < ApplicationController
   # GET /blog_comments
   # GET /blog_comments.xml
   def index
-    @blog_comments = BlogComment.all
+    @blog_post = BlogPost.find_by_cached_slug(params[:blog_post_id])
+    @blog_comments = @blog_post.blog_comments
     respond_with(@blog_comments)
   end
 
