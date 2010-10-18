@@ -36,6 +36,6 @@ Wtgsite::Application.routes.draw do |map|
 
 	match 'frontpage' => 'frontpage#index'
 	
-	match 'blog' => 'blog_posts#index'
+	resources :blog, :controller => 'blog_posts'
 
 end
