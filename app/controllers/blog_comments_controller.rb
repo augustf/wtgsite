@@ -1,6 +1,6 @@
 class BlogCommentsController < ApplicationController
   respond_to :html, :xml, :json	
-  before_filter :require_admin, :only => [:moderate, :new, :edit, :destroy]
+  before_filter :require_admin, :only => [:moderate, :edit, :destroy]
   
   def moderate
     @blog_comment = BlogComment.find(params[:id])
@@ -43,7 +43,7 @@ class BlogCommentsController < ApplicationController
         @blog_comment.moderated = true
       end
     end
-    flash[:notice] = "Blog Post successfully created" if @blog_comment.save
+    flash[:notice] = "Blog Comment successfully created" if verify_recaptcha() && @blog_comment.save
     respond_with(@blog_post)
   end
 
