@@ -1,4 +1,4 @@
-<section<% if current_user.is_admin? %> class="admin"<% end %> style="width:<%= column.width %>%;<% if column.is_clear? %>clear:both;<% end %>">
+<section<% if current_user && current_user.is_admin? %> class="admin"<% end %> style="width:<%= column.width %>%;<% if column.is_clear? %>clear:both;<% end %>">
 	<% if column.blocks.size == 0 %>
 		<%= link_to "Delete Empty Column", column, :confirm => 'Are you sure you want to delete this column?', :method => :delete %>
 	<% else %>
