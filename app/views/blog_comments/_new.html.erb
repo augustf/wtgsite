@@ -29,13 +29,7 @@
     <%= f.label :website %><br />
     <%= f.text_field :website %>
   </div>
-  <% else %>
-  <%= hidden_field(:name, current_user.name) %>
-  <%= hidden_field(:email, current_user.email) %>
-  <%= hidden_field(:website, current_user.website) %>
   <% end %>
-
-  <%= hidden_field(:posted_by_admin, posted_by_admin) %>
 
   Are you human? <%=raw recaptcha_tags %>
   <div class="actions">

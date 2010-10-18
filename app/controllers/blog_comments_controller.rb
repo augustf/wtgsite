@@ -35,7 +35,15 @@ class BlogCommentsController < ApplicationController
     @blog_post = BlogPost.find_by_cached_slug(params[:blog_post_id])
     @blog_comment = @blog_post.blog_comments.new(params[:blog_comment])
     @blog_comment.blog_post_id = @blog_post
-		#@blog_comment.user_id = current_user.id #set author of blog post correctly
+		if current_user
+		  @blog_comment.name = current_user.name
+      @blog_comment.email = current_user.email
+      @blog_comment.website = current_user.website
+      if current_user.is_admin?
+        @blog_comment.posted_by_admin = true
+        @blog_comment.moderated = true
+      end
+    end
     flash[:notice] = "Blog Post successfully created" if @blog_comment.save
     respond_with(@blog_post)
   end
