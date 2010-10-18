@@ -23,7 +23,7 @@
 
 <% @approved_comments.each do |comment| %>
   By <%= comment.name %> (<%= comment.email %>) on <%= comment.created_at.strftime('%m/%d/%Y') %> 
-    from <%= link_to comment.website, comment.website %>
+    <% if comment.website != nil %>from <%= link_to comment.website, comment.website %><% end %>
   <p><%= comment.body %></p>
   <p>Admin Status: <%= comment.posted_by_admin? %></p>
 <% end %>
