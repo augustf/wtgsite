@@ -4,7 +4,7 @@
 	<h1><%= link_to "Blog", blog_posts_path %> > <%= link_to @blog_post.blog_category.name, @blog_post.blog_category %> > <%= @blog_post.title %></h1>
 	<h2>By <%= link_to @blog_post.user.name, @blog_post.user %></h2>
 	<h3><% link_to "#comments" do %><%= @blog_post.blog_comments.where(:moderated => 1).count %> Comments<% end %></h3>
-	<% if current_user.is_admin? %>
+	<% if current_user && current_user.is_admin? %>
 	<h2><%= link_to 'Edit', edit_blog_post_path(@blog_post) %></h2>
 	<% end %>
 </hgroup>
@@ -13,7 +13,7 @@
 
 <h2 id="comments">Comments:</h2>
 
-<% if current_user.is_admin? %>
+<% if current_user && current_user.is_admin? %>
 	<% if @unapproved_comments.count == 1 %>
 	<p>There is currently 1 unapproved comment for this post. <%= link_to "Manage it.", blog_post_blog_comments_path(@blog_post) %></p>
 	<% elsif @unapproved_comments.count > 1 %>
@@ -28,7 +28,7 @@
   <p>Admin Status: <%= comment.posted_by_admin? %></p>
 <% end %>
 
-<% if current_user.is_admin? %>
+<% if current_user && current_user.is_admin? %>
 	<% admin_value = current_user.is_admin %>
 <% else %>
 	<% admin_value = 0 %>

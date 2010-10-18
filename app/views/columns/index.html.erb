@@ -1,11 +1,11 @@
 <hgroup>
 	<h1>Columns List</h1>
-	<% if current_user.is_admin? %>
+	<% if current_user && current_user.is_admin? %>
 	<h2><%= link_to "Create New Column", new_column_path %></h2>
 	<% end %>
 </hgroup>
 <ul>
 	<% @columns.each do |column| %>
-	<li>Column <%= column.id %> <% if current_user.is_admin? %>(<%= link_to "Edit", edit_column_path(column) %>, <%= link_to "Delete", column, :confirm => 'Are you sure you want to delete this column?', :method => :delete %>)<% end %></li>
+	<li>Column <%= column.id %> <% if current_user && current_user.is_admin? %>(<%= link_to "Edit", edit_column_path(column) %>, <%= link_to "Delete", column, :confirm => 'Are you sure you want to delete this column?', :method => :delete %>)<% end %></li>
 	<% end %>
 </ul>

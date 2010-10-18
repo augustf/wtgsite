@@ -2,7 +2,7 @@
 
 <hgroup>
 	<h1><%= link_to "Blog", blog_posts_path %> > <%= @blog_category.name %></h1>
-	<% if current_user.is_admin? %>
+	<% if current_user && current_user.is_admin? %>
 	<h2><%= link_to "New Post", new_blog_post_path %> | <%= link_to 'Edit', edit_blog_category_path(@blog_category) %></h2>
 	<% end %>
 </hgroup>
