@@ -34,7 +34,6 @@ class BlogCommentsController < ApplicationController
   def create
     @blog_post = BlogPost.find_by_cached_slug(params[:blog_post_id])
     @blog_comment = @blog_post.blog_comments.new(params[:blog_comment])
-    @blog_comment.blog_post_id = @blog_post
 		if current_user
 		  @blog_comment.name = current_user.name
       @blog_comment.email = current_user.email
