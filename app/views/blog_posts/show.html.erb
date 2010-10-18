@@ -1,7 +1,7 @@
 <% if flash[:notice] %><p id="notice"><%= notice %></p><% end %>
 
 <hgroup>
-	<h1><%= @blog_post.title %></h1>
+	<h1><%= link_to "Blog", blog_posts_path %> > <%= link_to @blog_post.blog_category.name, @blog_post.blog_category %> > <%= @blog_post.title %></h1>
 	<h2>By <%= link_to @blog_post.user.name, @blog_post.user %></h2>
 	<h3><% link_to "#comments" do %><%= @blog_post.blog_comments.where(:moderated => 1).count %> Comments<% end %></h3>
 	<% if current_user.is_admin? %>

@@ -1,3 +1,5 @@
+<% if flash[:notice] %><p id="notice"><%= notice %></p><% end %>
+
 <hgroup>
 	<h1>Blog</h1>
 	<% if current_user.is_admin? %>
@@ -7,23 +9,10 @@
 <h2>Categories</h2>
 <ul>
 	<% @blog_categories.each do |blog_cat| %>
-	<li><%= blog_cat.name %><% if current_user.is_admin? %> (<%= link_to "Edit", edit_blog_category_path(blog_cat) %>, <%= link_to "Delete", blog_cat, :confirm => 'Are you sure you want to delete this blog category?', :method => :delete %>)<% end %></li>
+	<li><%= link_to blog_cat.name, blog_cat %><% if current_user.is_admin? %> (<%= link_to "Edit", edit_blog_category_path(blog_cat) %>, <%= link_to "Delete", blog_cat, :confirm => 'Are you sure you want to delete this blog category?', :method => :delete %>)<% end %></li>
 	<% end %>
 </ul>
 <h2>Posts</h2>
-<% @blog_posts.each do |blog_post| %>
-<section>
-	<hgroup>
-		<h1><%= link_to blog_post.title, blog_post %></h1>
-		<h2>By <%= link_to blog_post.user.name, blog_post.user %></h2>
-		<h3><% link_to blog_post_path(blog_post, :anchor => "comments") do %><%= blog_post.blog_comments.where(:moderated => 1).count %> Comments<% end %></h3>
-	</hgroup>
-	<p>
-		<% body = snippet(blog_post.body) %>
-		<%=raw body %>
-		<% if truncated?(body) %>&nbsp;<%= link_to('[Read More]', :action => 'show', :id => blog_post) %><% end %>
-	</p>
-</section>
-<% end %>
+<%= render @blog_posts %>
 
 <%= will_paginate @blog_posts %>

@@ -13,6 +13,7 @@ class BlogCategoriesController < ApplicationController
   # GET /blog_categories/1.xml
   def show
     @blog_category = BlogCategory.find(params[:id])
+    @matched_posts = @blog_category.blog_posts.paginate :page => params[:page], :order => 'updated_at DESC'
     respond_with(@blog_category)
   end
 

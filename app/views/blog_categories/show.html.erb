@@ -1,10 +1,12 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %><p id="notice"><%= notice %></p><% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @blog_category.name %>
-</p>
+<hgroup>
+	<h1><%= link_to "Blog", blog_posts_path %> > <%= @blog_category.name %></h1>
+	<% if current_user.is_admin? %>
+	<h2><%= link_to "New Post", new_blog_post_path %> | <%= link_to 'Edit', edit_blog_category_path(@blog_category) %></h2>
+	<% end %>
+</hgroup>
 
+<%= render @matched_posts %>
 
-<%= link_to 'Edit', edit_blog_category_path(@blog_category) %> |
-<%= link_to 'Back', blog_categories_path %>
+<%= will_paginate @matched_posts %>
