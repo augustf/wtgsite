@@ -19,7 +19,7 @@ class BlocksController < ApplicationController
   # GET /blocks/new
   # GET /blocks/new.xml
   def new
-    @column = Column.find(params[:column_id]) 
+    @column = Column.find(params[:column_id])
     @block = @column.blocks.new
     respond_with(@block)
   end
@@ -33,9 +33,10 @@ class BlocksController < ApplicationController
   # POST /blocks.xml
   def create
     @column = Column.find(params[:column_id])
+    @page = @column.page
     @block = @column.blocks.new(params[:block])
     flash[:notice] = "Block successfully created" if @block.save
-    respond_with(@block)
+    respond_with(@page)
   end
 
   # PUT /blocks/1

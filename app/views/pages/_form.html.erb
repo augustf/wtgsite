@@ -1,13 +1,15 @@
-<%= form_for(@page, :html => { :class => 'cmxform', :multipart => true}) do |f| %>
+<%= form_for(@page) do |f| %>
   <%= f.error_messages %>
 
-	<fieldset>
-		<ol>
-		  <li></li><%= f.label :category_id %><br />
-      <%= f.select :category_id, Category.all.collect {|c| [ c.name, c.id ] }  %></li>
-			<li><%= f.label :title %> <%= f.text_field :title %></li>
-		</ol>
-	</fieldset>
-  <p class="submitbutton"><%= f.submit button_text %></p>
-  
+  <div class="field">
+	<%= f.label :category_id %><br />
+	<%= f.select :category_id, Category.all.collect {|c| [ c.name, c.id ] }  %>
+  </div>
+  <div class="field">
+	<%= f.label :title %><br />
+	<%= f.text_field :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

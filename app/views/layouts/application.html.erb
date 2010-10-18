@@ -16,11 +16,15 @@
 		<% if current_user %>
 		<p>Logged in as <%= current_user.username %></p>
 		<ul>
-			<li><%= link_to "Logout", logout_path %></li>
 			<% if current_user.is_admin? %>
-			  <li><%= link_to "Manage Users", users_path %></li>
-			  <li><%= link_to "Site Pages", pages_path %></li>
+			<li><%= link_to "Manage Users", users_path %></li>
 			<% end %>
+			<li><%= link_to "Logout", logout_path %></li>
+		</ul>
+		<% else %>
+		<ul>
+			<li><%= link_to "Register", new_user_path %></li>
+			<li><%= link_to "Login", login_path %></li>
 		</ul>
 		<% end %>
 		<%= link_to image_tag("your_logo_here.png", :alt => "The Logo", :title => "Home"), frontpage_path %>
@@ -45,12 +49,6 @@
 	<% end %>
 	
 	<footer>
-		<% if !current_user %>
-		<ul>
-			<li><%= link_to "Register", new_user_path %></li>
-			<li><%= link_to "Login", login_path %></li>
-		</ul>
-		<% end %>
 	</footer>
 </body>
 </html>
