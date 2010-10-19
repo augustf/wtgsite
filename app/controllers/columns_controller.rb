@@ -1,6 +1,14 @@
 class ColumnsController < ApplicationController
   respond_to :html, :xml, :json
-  before_filter :require_admin, :only => [:new, :edit, :create, :update, :destroy]   
+  before_filter :require_admin, :only => [:sort, :new, :edit, :create, :update, :destroy]   
+ 
+  #POST columns/sort
+  def sort  
+    params[:columns].each_with_index do |id, index|  
+      Column.update_all([Õposition=?Õ, index+1], [Õid=?Õ, id])  
+    end  
+    render :text => ""  
+  end   
   
   # GET /columns
   # GET /columns.xml
