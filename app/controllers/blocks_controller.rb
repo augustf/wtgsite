@@ -5,7 +5,7 @@ class BlocksController < ApplicationController
   #POST blocks/sort
   def sort  
     params[:blocks].each_with_index do |id, index|  
-      Block.update_all([Õposition=?Õ, index+1], [Õid=?Õ, id])  
+      Block.update_all(['position=?', index+1], ['id=?', id])  
     end  
     render :text => ""  
   end  	
