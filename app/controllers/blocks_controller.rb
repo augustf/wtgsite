@@ -1,6 +1,6 @@
 class BlocksController < ApplicationController
   respond_to :html, :xml, :json
-  before_filter :require_admin, :only => [:sort, :new, :edit, :create, :update, :destroy] 
+  before_filter :require_admin, :only => [:sort, :new, :edit, :create, :update, :destroy, :move_block_higher, :move_block_lower] 
   
   # GET /blocks
   # GET /blocks.xml

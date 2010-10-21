@@ -1,6 +1,6 @@
 class ColumnsController < ApplicationController
   respond_to :html, :xml, :json
-  before_filter :require_admin, :only => [:sort, :new, :edit, :create, :update, :destroy]     
+  before_filter :require_admin, :only => [:sort, :new, :edit, :create, :update, :destroy, :move_column_higher, :move_column_lower]     
   
   # GET /columns
   # GET /columns.xml
