@@ -54,4 +54,18 @@ class ColumnsController < ApplicationController
     @column.destroy
     respond_with(@page)
   end
+  
+  def move_column_higher
+    @column = Column.find(params[:id])
+    @page = @column.page
+    flash[:notice] = "That column was moved up one space on the page." if @column.move_higher
+    redirect_to(@page)
+  end
+  
+  def move_column_lower
+    @column = Column.find(params[:id])
+    @page = @column.page
+    flash[:notice] = "That column was moved down one space on the page." if @column.move_lower
+    redirect_to(@page)
+  end
 end

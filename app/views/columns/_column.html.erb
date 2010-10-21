@@ -1,9 +1,9 @@
 <section<% if current_user && current_user.is_admin? %> class="admin"<% end %> style="width:<%= column.width %>%;<% if column.is_clear? %>clear:both;<% end %>">
 	<% if column.blocks.size == 0 %>
-		<%= link_to "Delete Empty Column", column, :confirm => 'Are you sure you want to delete this column?', :method => :delete %>
+		<% if current_user && current_user.is_admin? %><%= link_to "Delete Empty Column", column, :confirm => 'Are you sure you want to delete this column?', :method => :delete %><% end %>
 	<% else %>
 		<%= render column.blocks %>
 	<% end %>
 	<br />
-	<%= link_to "Add Block Here", new_column_block_path(column) %>
+	<% if current_user && current_user.is_admin? %>(<%= link_to "Up", move_column_higher_column_path(column) %>, <%= link_to "Down", move_column_lower_column_path(column) %>, <%= link_to "Add Block Here", new_column_block_path(column) %><% end %>
 </section>

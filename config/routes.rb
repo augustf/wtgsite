@@ -14,10 +14,20 @@ Wtgsite::Application.routes.draw do |map|
 	
 	resources :contacts
 	
-	resources :blocks
+	resources :blocks do
+	  member do
+	    get :move_block_higher
+	    get :move_block_lower
+	  end
+	end
 	
 	resources :columns do
 	  resources :blocks
+	  
+	  member do
+	    get :move_column_higher
+	    get :move_column_lower
+	  end
 	end
 
   resources :blog_posts do

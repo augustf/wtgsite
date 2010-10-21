@@ -55,5 +55,19 @@ class BlocksController < ApplicationController
     @block.destroy
     respond_with(@page)
   end
+  
+  def move_block_higher
+    @block = Block.find(params[:id])
+    @page = @block.column.page
+    flash[:notice] = "That block was moved up one space in its column" if @block.move_higher
+    redirect_to(@page)
+  end
+  
+  def move_block_lower
+    @block = Block.find(params[:id])
+    @page = @block.column.page
+    flash[:notice] = "That block was moved down one space in its column" if @block.move_lower
+    redirect_to(@page)
+  end
 
 end
