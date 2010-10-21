@@ -14,13 +14,10 @@ Wtgsite::Application.routes.draw do |map|
 	
 	resources :contacts
 	
-	resources :blocks do
-	  collection { get :sort }
-	end
+	resources :blocks
 	
 	resources :columns do
 	  resources :blocks
-	  collection { get :sort }
 	end
 
   resources :blog_posts do

@@ -2,14 +2,6 @@ class BlocksController < ApplicationController
   respond_to :html, :xml, :json
   before_filter :require_admin, :only => [:sort, :new, :edit, :create, :update, :destroy] 
   
-  #POST blocks/sort
-  def sort  
-    params[:blocks].each_with_index do |id, index|  
-      Block.update_all(['position=?', index+1], ['id=?', id])  
-    end  
-    render :text => ""  
-  end  	
-  
   # GET /blocks
   # GET /blocks.xml
   def index
