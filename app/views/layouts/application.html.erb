@@ -11,7 +11,7 @@
 	<%= javascript_include_tag "html5.js" %>
 	<![endif]-->
 </head>
-<body>
+<body<% if controller.controller_name == "pages" && controller.action_name == "show" %> class="category_<%= @page.category.name.downcase %>"<% end %>>
 	<header>
 		<% if current_user %>
 		<p>Logged in as <%= current_user.username %></p>
