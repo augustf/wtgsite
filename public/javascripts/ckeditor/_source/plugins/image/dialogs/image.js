@@ -250,7 +250,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			switchLockRatio( this, false );	// Unlock.
 		};
 
-		var numbering = function( id ){ return id + CKEDITOR.tools.getNextNumber(); },
+		var numbering = function( id )
+			{
+				return CKEDITOR.tools.getNextId() + '_' + id;
+			},
 			btnLockSizesId = numbering( 'btnLockSizes' ),
 			btnResetSizeId = numbering( 'btnResetSize' ),
 			imagePreviewLoaderId = numbering( 'ImagePreviewLoader' ),
@@ -261,7 +264,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		return {
 			title : ( dialogType == 'image' ) ? editor.lang.image.title : editor.lang.image.titleButton,
 			minWidth : 420,
-			minHeight : 310,
+			minHeight : CKEDITOR.env.ie && CKEDITOR.env.quirks?  360: 310,
 			onShow : function()
 			{
 				this.imageElement = false;
@@ -316,7 +319,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						this.setupContent( LINK, link );
 				}
 
-				if ( element && element.getName() == 'img' && !element.getAttribute( '_cke_realelement' )
+				if ( element && element.getName() == 'img' && !element.data( 'cke-realelement' )
 					|| element && element.getName() == 'input' && element.getAttribute( 'type' ) == 'image' )
 				{
 					this.imageEditMode = element.getName();
@@ -530,7 +533,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 											{
 												if ( type == IMAGE )
 												{
-													var url = element.getAttribute( '_cke_saved_src' ) || element.getAttribute( 'src' );
+													var url = element.data( 'cke-saved-src' ) || element.getAttribute( 'src' );
 													var field = this;
 
 													this.getDialog().dontResetSize = true;
@@ -538,14 +541,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													field.setValue( url );		// And call this.onChange()
 													// Manually set the initial value.(#4191)
 													field.setInitValue();
-													field.focus();
 												}
 											},
 											commit : function( type, element )
 											{
 												if ( type == IMAGE && ( this.getValue() || this.isChanged() ) )
 												{
-													element.setAttribute( '_cke_saved_src', decodeURI( this.getValue() ) );
+													element.data( 'cke-saved-src', decodeURI( this.getValue() ) );
 													element.setAttribute( 'src', decodeURI( this.getValue() ) );
 												}
 												else if ( type == CLEANUP )
@@ -575,7 +577,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							id : 'txtAlt',
 							type : 'text',
 							label : editor.lang.image.alt,
-							accessKey : 'A',
+							accessKey : 'T',
 							'default' : '',
 							onChange : function()
 							{
@@ -605,17 +607,15 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						},
 						{
 							type : 'hbox',
-							widths : [ '140px', '240px' ],
 							children :
 							[
 								{
 									type : 'vbox',
-									padding : 10,
 									children :
 									[
 										{
 											type : 'hbox',
-											widths : [ '70%', '30%' ],
+											widths : [ '50%', '50%' ],
 											children :
 											[
 												{
@@ -627,8 +627,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 															type : 'text',
 															width: '40px',
 															id : 'txtWidth',
-															labelLayout : 'horizontal',
-															label : editor.lang.image.width,
+															label : editor.lang.common.width,
 															onKeyUp : onSizeChange,
 															onChange : function()
 															{
@@ -638,7 +637,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 															{
 																var aMatch  =  this.getValue().match( regexGetSizeOrEmpty );
 																if ( !aMatch )
-																	alert( editor.lang.image.validateWidth );
+																	alert( editor.lang.common.invalidWidth );
 																return !!aMatch;
 															},
 															setup : setupDimension,
@@ -664,7 +663,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 																			element.setStyle( 'width',  oImageOriginal.$.width + 'px');
 																	}
 																	else
-																		element.setStyle( 'width', value + 'px');
+																		element.setStyle( 'width', CKEDITOR.tools.cssLength( value ) );
 																}
 																else if ( type == CLEANUP )
 																{
@@ -677,8 +676,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 															type : 'text',
 															id : 'txtHeight',
 															width: '40px',
-															labelLayout : 'horizontal',
-															label : editor.lang.image.height,
+															label : editor.lang.common.height,
 															onKeyUp : onSizeChange,
 															onChange : function()
 															{
@@ -688,7 +686,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 															{
 																var aMatch = this.getValue().match( regexGetSizeOrEmpty );
 																if ( !aMatch )
-																	alert( editor.lang.image.validateHeight );
+																	alert( editor.lang.common.invalidHeight );
 																return !!aMatch;
 															},
 															setup : setupDimension,
@@ -715,7 +713,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 																			element.setStyle( 'height', oImageOriginal.$.height + 'px' );
 																	}
 																	else
-																		element.setStyle( 'height', value + 'px' );
+																		element.setStyle( 'height',  CKEDITOR.tools.cssLength( value ) );
 																}
 																else if ( type == CLEANUP )
 																{
@@ -728,7 +726,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 												},
 												{
 													type : 'html',
-													style : 'margin-top:10px;width:40px;height:40px;',
+													style : 'margin-top:30px;width:40px;height:40px;',
 													onLoad : function()
 													{
 														// Activate Reset button
@@ -798,7 +796,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													type : 'text',
 													id : 'txtBorder',
 													width: '60px',
-													labelLayout : 'horizontal',
 													label : editor.lang.image.border,
 													'default' : '',
 													onKeyUp : function()
@@ -855,7 +852,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													type : 'text',
 													id : 'txtHSpace',
 													width: '60px',
-													labelLayout : 'horizontal',
 													label : editor.lang.image.hSpace,
 													'default' : '',
 													onKeyUp : function()
@@ -919,7 +915,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													type : 'text',
 													id : 'txtVSpace',
 													width : '60px',
-													labelLayout : 'horizontal',
 													label : editor.lang.image.vSpace,
 													'default' : '',
 													onKeyUp : function()
@@ -981,16 +976,15 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 												{
 													id : 'cmbAlign',
 													type : 'select',
-													labelLayout : 'horizontal',
 													widths : [ '35%','65%' ],
 													style : 'width:90px',
-													label : editor.lang.image.align,
+													label : editor.lang.common.align,
 													'default' : '',
 													items :
 													[
 														[ editor.lang.common.notSet , ''],
-														[ editor.lang.image.alignLeft , 'left'],
-														[ editor.lang.image.alignRight , 'right']
+														[ editor.lang.common.alignLeft , 'left'],
+														[ editor.lang.common.alignRight , 'right']
 														// Backward compatible with v2 on setup when specified as attribute value,
 														// while these values are no more available as select options.
 														//	[ editor.lang.image.alignAbsBottom , 'absBottom'],
@@ -1096,7 +1090,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							{
 								if ( type == LINK )
 								{
-									var href = element.getAttribute( '_cke_saved_href' );
+									var href = element.data( 'cke-saved-href' );
 									if ( !href )
 										href = element.getAttribute( 'href' );
 									this.setValue( href );
@@ -1108,7 +1102,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								{
 									if ( this.getValue() || this.isChanged() )
 									{
-										element.setAttribute( '_cke_saved_href', decodeURI( this.getValue() ) );
+										element.data( 'cke-saved-href', decodeURI( this.getValue() ) );
 										element.setAttribute( 'href', 'javascript:void(0)/*' +
 											CKEDITOR.tools.getNextNumber() + '*/' );
 
@@ -1125,7 +1119,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							{
 								action : 'Browse',
 								target: 'Link:txtUrl',
-								url: editor.config.filebrowserImageBrowseLinkUrl || editor.config.filebrowserBrowseUrl
+								url: editor.config.filebrowserImageBrowseLinkUrl
 							},
 							style : 'float:right',
 							hidden : true,
@@ -1147,7 +1141,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							setup : function( type, element )
 							{
 								if ( type == LINK )
-									this.setValue( element.getAttribute( 'target' ) );
+									this.setValue( element.getAttribute( 'target' ) || '' );
 							},
 							commit : function( type, element )
 							{

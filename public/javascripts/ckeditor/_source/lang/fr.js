@@ -56,6 +56,7 @@ CKEDITOR.lang['fr'] =
 	superscript		: 'Exposant',
 	horizontalrule	: 'Ligne horizontale',
 	pagebreak		: 'Saut de page',
+	pagebreakAlt		: 'Page Break', // MISSING
 	unlink			: 'Supprimer le lien',
 	undo			: 'Annuler',
 	redo			: 'Rétablir',
@@ -105,6 +106,21 @@ CKEDITOR.lang['fr'] =
 		targetTop		: 'Topmost Window (_top)', // MISSING
 		targetSelf		: 'Same Window (_self)', // MISSING
 		targetParent	: 'Parent Window (_parent)', // MISSING
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
+		width			: 'Largeur',
+		height			: 'Hauteur',
+		align			: 'Alignement',
+		alignLeft		: 'Gauche',
+		alignRight		: 'Droite',
+		alignCenter		: 'Centré',
+		alignTop		: 'Haut',
+		alignMiddle		: 'Milieu',
+		alignBottom		: 'Bas',
+		invalidHeight	: 'La hauteur doit être un nombre.',
+		invalidWidth	: 'La largeur doit être un nombre.',
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, Indisponible</span>'
@@ -151,9 +167,7 @@ CKEDITOR.lang['fr'] =
 		popupFullScreen	: 'Plein écran (IE)',
 		popupScrollBars	: 'Barres de défilement',
 		popupDependent	: 'Dépendante (Netscape)',
-		popupWidth		: 'Largeur',
 		popupLeft		: 'Position gauche',
-		popupHeight		: 'Hauteur',
 		popupTop		: 'Position haute',
 		id				: 'Id',
 		langDir			: 'Sens d\'écriture',
@@ -196,6 +210,7 @@ CKEDITOR.lang['fr'] =
 		bulletedTitle		: 'Bulleted List Properties', // MISSING
 		type				: 'Type', // MISSING
 		start				: 'Start', // MISSING
+		validateStartNumber				:'List start number must be a whole number.', // MISSING
 		circle				: 'Circle', // MISSING
 		disc				: 'Disc', // MISSING
 		square				: 'Square', // MISSING
@@ -238,15 +253,9 @@ CKEDITOR.lang['fr'] =
 		rows		: 'Lignes',
 		columns		: 'Colonnes',
 		border		: 'Taille de la bordure',
-		align		: 'Alignement du contenu',
-		alignLeft	: 'Gauche',
-		alignCenter	: 'Centré',
-		alignRight	: 'Droite',
-		width		: 'Largeur',
 		widthPx		: 'pixels',
 		widthPc		: '% pourcents',
 		widthUnit	: 'width unit', // MISSING
-		height		: 'Hauteur',
 		cellSpace	: 'Espacement des cellules',
 		cellPad		: 'Marge interne des cellules',
 		caption		: 'Titre du tableau',
@@ -282,9 +291,6 @@ CKEDITOR.lang['fr'] =
 			wordWrap		: 'Word Wrap', // MISSING
 			hAlign			: 'Alignement Horizontal',
 			vAlign			: 'Alignement Vertical',
-			alignTop		: 'Haut',
-			alignMiddle		: 'Milieu',
-			alignBottom		: 'Bas',
 			alignBaseline	: 'Bas du texte',
 			bgColor			: 'Couleur d\'arrière-plan',
 			borderColor		: 'Couleur de Bordure',
@@ -405,24 +411,17 @@ CKEDITOR.lang['fr'] =
 		btnUpload	: 'Envoyer sur le serveur',
 		upload		: 'Envoyer',
 		alt			: 'Texte de remplacement',
-		width		: 'Largeur',
-		height		: 'Hauteur',
 		lockRatio	: 'Garder les proportions',
 		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Taille d\'origine',
 		border		: 'Bordure',
 		hSpace		: 'Espacement horizontal',
 		vSpace		: 'Espacement vertical',
-		align		: 'Alignement',
-		alignLeft	: 'Gauche',
-		alignRight	: 'Droite',
 		alertUrl	: 'Veuillez entrer l\'adresse de l\'image',
 		linkTab		: 'Lien',
 		button2Img	: 'Voulez-vous transformer le bouton image sélectionné en simple image?',
 		img2Button	: 'Voulez-vous transformer l\'image en bouton image?',
 		urlMissing	: 'Image source URL is missing.', // MISSING
-		validateWidth	: 'Width must be a whole number.', // MISSING
-		validateHeight	: 'Height must be a whole number.', // MISSING
 		validateBorder	: 'Border must be a whole number.', // MISSING
 		validateHSpace	: 'HSpace must be a whole number.', // MISSING
 		validateVSpace	: 'VSpace must be a whole number.' // MISSING
@@ -446,16 +445,10 @@ CKEDITOR.lang['fr'] =
 		accessAlways	: 'Toujours',
 		accessSameDomain: 'Même domaine',
 		accessNever		: 'Jamais',
-		align			: 'Alignement',
-		alignLeft		: 'Gauche',
 		alignAbsBottom	: 'Bas absolu',
 		alignAbsMiddle	: 'Milieu absolu',
 		alignBaseline	: 'Bas du texte',
-		alignBottom		: 'Bas',
-		alignMiddle		: 'Milieu',
-		alignRight		: 'Droite',
 		alignTextTop	: 'Haut du texte',
-		alignTop		: 'Haut',
 		quality			: 'Qualité',
 		qualityBest		: 'Meilleure',
 		qualityHigh		: 'Haute',
@@ -469,13 +462,9 @@ CKEDITOR.lang['fr'] =
 		windowMode		: 'Mode fenêtre',
 		flashvars		: 'Variables du Flash',
 		bgcolor			: 'Couleur d\'arrière-plan',
-		width			: 'Largeur',
-		height			: 'Hauteur',
 		hSpace			: 'Espacement horizontal',
 		vSpace			: 'Espacement vertical',
 		validateSrc		: 'L\'adresse ne doit pas être vide.',
-		validateWidth	: 'La largeur doit être un nombre.',
-		validateHeight	: 'La hauteur doit être un nombre.',
 		validateHSpace	: 'L\'espacement horizontal doit être un nombre.',
 		validateVSpace	: 'L\'espacement vertical doit être un nombre.'
 	},
@@ -610,6 +599,15 @@ CKEDITOR.lang['fr'] =
 		remove				: 'Remove Div' // MISSING
   	},
 
+	iframe :
+	{
+		title		: 'iFrame Properties', // MISSING
+		toolbar		: 'iFrame', // MISSING
+		noUrl		: 'Please type the iFrame URL', // MISSING
+		scrolling	: 'Enable scrollbars', // MISSING
+		border		: 'Show frame border' // MISSING
+	},
+
 	font :
 	{
 		label		: 'Police',
@@ -642,7 +640,7 @@ CKEDITOR.lang['fr'] =
 		'008080' : 'Teal', // MISSING
 		'000080' : 'Navy', // MISSING
 		'4B0082' : 'Indigo', // MISSING
-		'696969' : 'Dim Gray', // MISSING
+		'696969' : 'Dark Gray', // MISSING
 		'B22222' : 'Fire Brick', // MISSING
 		'A52A2A' : 'Brown', // MISSING
 		'DAA520' : 'Golden Rod', // MISSING
@@ -658,7 +656,7 @@ CKEDITOR.lang['fr'] =
 		'0FF' : 'Cyan', // MISSING
 		'00F' : 'Blue', // MISSING
 		'EE82EE' : 'Violet', // MISSING
-		'A9A9A9' : 'Dark Gray', // MISSING
+		'A9A9A9' : 'Dim Gray', // MISSING
 		'FFA07A' : 'Light Salmon', // MISSING
 		'FFA500' : 'Orange', // MISSING
 		'FFFF00' : 'Yellow', // MISSING
@@ -707,7 +705,7 @@ CKEDITOR.lang['fr'] =
 		dic_restore		: 'Restore', // MISSING
 		dic_delete		: 'Delete', // MISSING
 		dic_rename		: 'Rename', // MISSING
-		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type it\'s name and click the Restore button.', // MISSING
+		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type its name and click the Restore button.', // MISSING
 
 		aboutTab		: 'A propos de'
 	},
@@ -725,10 +723,11 @@ CKEDITOR.lang['fr'] =
 
 	fakeobjects :
 	{
-		anchor	: 'Ancre',
-		flash	: 'Animation Flash',
-		div		: 'Saut de Page',
-		unknown	: 'Objet Inconnu'
+		anchor		: 'Ancre',
+		flash		: 'Animation Flash',
+		iframe		: 'iFrame', // MISSING
+		hiddenfield	: 'Hidden Field', // MISSING
+		unknown		: 'Objet Inconnu'
 	},
 
 	resize : 'Glisser pour modifier la taille',
@@ -743,5 +742,11 @@ CKEDITOR.lang['fr'] =
 	},
 
 	toolbarCollapse	: 'Collapse Toolbar', // MISSING
-	toolbarExpand	: 'Expand Toolbar' // MISSING
+	toolbarExpand	: 'Expand Toolbar', // MISSING
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

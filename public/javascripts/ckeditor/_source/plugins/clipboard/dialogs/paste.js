@@ -10,10 +10,11 @@ CKEDITOR.dialog.add( 'paste', function( editor )
 
 	function onPasteFrameLoad( win )
 	{
-		var doc =  new CKEDITOR.dom.document( win.document ),
+		var doc = new CKEDITOR.dom.document( win.document ),
 			docElement = doc.$;
 
-		doc.getById( "cke_actscrpt" ).remove();
+		var script = doc.getById( 'cke_actscrpt' );
+		script && script.remove();
 
 		CKEDITOR.env.ie ?
 			docElement.body.contentEditable = "true" :
@@ -74,17 +75,24 @@ CKEDITOR.dialog.add( 'paste', function( editor )
 					'</script></body>' +
 				'</html>';
 
+			var src =
+				CKEDITOR.env.air ?
+					'javascript:void(0)' :
+				isCustomDomain ?
+					'javascript:void((function(){' +
+						'document.open();' +
+						'document.domain=\'' + document.domain + '\';' +
+						'document.close();' +
+						'})())"'
+				:
+					'';
+
 			var iframe = CKEDITOR.dom.element.createFromHtml(
 						'<iframe' +
+						' class="cke_pasteframe"' +
 						' frameborder="0" ' +
 						' allowTransparency="true"' +
-						// Support for custom document.domain in IE.
-						( isCustomDomain ?
-							' src="javascript:void((function(){' +
-								'document.open();' +
-								'document.domain=\'' + document.domain + '\';' +
-								'document.close();' +
-							'})())"' : '' ) +
+						' src="' + src + '"' +
 						' role="region"' +
 						' aria-label="' + lang.pasteArea + '"' +
 						' aria-describedby="' + this.getContentElement( 'general', 'pasteMsg' ).domId + '"' +
@@ -92,24 +100,17 @@ CKEDITOR.dialog.add( 'paste', function( editor )
 						'></iframe>' );
 
 			iframe.on( 'load', function( e )
-			{
-				e.removeListener();
-				var doc = iframe.getFrameDocument().$;
-				// Custom domain handling is needed after each document.open().
-				doc.open();
-				if ( isCustomDomain )
-					doc.domain = document.domain;
-				doc.write( htmlToLoad );
-				doc.close();
-			}, this );
-
-			iframe.setStyles(
 				{
-					width : '346px',
-					height : '130px',
-					'background-color' : 'white',
-					border : '1px solid black'
-				} );
+					e.removeListener();
+
+					var doc = iframe.getFrameDocument();
+					doc.write( htmlToLoad );
+
+					if ( CKEDITOR.env.air )
+						onPasteFrameLoad.call( this, doc.getWindow().$ );
+				},
+				this );
+
 			iframe.setCustomData( 'dialog', this );
 
 			var field = this.getContentElement( 'general', 'editing_area' ),

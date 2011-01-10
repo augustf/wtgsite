@@ -98,7 +98,7 @@ CKEDITOR.dialog.add( 'textfield', function( editor )
 								setup : function( element )
 								{
 									this.setValue(
-											element.getAttribute( '_cke_saved_name' ) ||
+											element.data( 'cke-saved-name' ) ||
 											element.getAttribute( 'name' ) ||
 											'' );
 								},
@@ -107,10 +107,10 @@ CKEDITOR.dialog.add( 'textfield', function( editor )
 									var element = data.element;
 
 									if ( this.getValue() )
-										element.setAttribute( '_cke_saved_name', this.getValue() );
+										element.data( 'cke-saved-name', this.getValue() );
 									else
 									{
-										element.removeAttribute( '_cke_saved_name' );
+										element.data( 'cke-saved-name', false );
 										element.removeAttribute( 'name' );
 									}
 								}
@@ -147,7 +147,13 @@ CKEDITOR.dialog.add( 'textfield', function( editor )
 								style : 'width:50px',
 								validate : CKEDITOR.dialog.validate.integer( editor.lang.common.validateNumberFailed )
 							}
-						]
+						],
+						onLoad : function()
+						{
+							// Repaint the style for IE7 (#6068)
+							if ( CKEDITOR.env.ie7Compat )
+								this.getElement().setStyle( 'zoom', '100%' );
+						}
 					},
 					{
 						id : 'type',

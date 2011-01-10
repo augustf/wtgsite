@@ -56,6 +56,7 @@ CKEDITOR.lang['sl'] =
 	superscript		: 'Nadpisano',
 	horizontalrule	: 'Vstavi vodoravno črto',
 	pagebreak		: 'Vstavi prelom strani',
+	pagebreakAlt		: 'Page Break', // MISSING
 	unlink			: 'Odstrani povezavo',
 	undo			: 'Razveljavi',
 	redo			: 'Ponovi',
@@ -105,6 +106,21 @@ CKEDITOR.lang['sl'] =
 		targetTop		: 'Topmost Window (_top)', // MISSING
 		targetSelf		: 'Same Window (_self)', // MISSING
 		targetParent	: 'Parent Window (_parent)', // MISSING
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
+		width			: 'Širina',
+		height			: 'Višina',
+		align			: 'Poravnava',
+		alignLeft		: 'Levo',
+		alignRight		: 'Desno',
+		alignCenter		: 'Sredinsko',
+		alignTop		: 'Na vrh',
+		alignMiddle		: 'V sredino',
+		alignBottom		: 'Na dno',
+		invalidHeight	: 'Višina mora biti število.',
+		invalidWidth	: 'Širina mora biti število.',
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, nedosegljiv</span>'
@@ -151,9 +167,7 @@ CKEDITOR.lang['sl'] =
 		popupFullScreen	: 'Celozaslonska slika (IE)',
 		popupScrollBars	: 'Drsniki',
 		popupDependent	: 'Podokno (Netscape)',
-		popupWidth		: 'Širina',
 		popupLeft		: 'Lega levo',
-		popupHeight		: 'Višina',
 		popupTop		: 'Lega na vrhu',
 		id				: 'Id',
 		langDir			: 'Smer jezika',
@@ -196,6 +210,7 @@ CKEDITOR.lang['sl'] =
 		bulletedTitle		: 'Bulleted List Properties', // MISSING
 		type				: 'Type', // MISSING
 		start				: 'Start', // MISSING
+		validateStartNumber				:'List start number must be a whole number.', // MISSING
 		circle				: 'Circle', // MISSING
 		disc				: 'Disc', // MISSING
 		square				: 'Square', // MISSING
@@ -238,15 +253,9 @@ CKEDITOR.lang['sl'] =
 		rows		: 'Vrstice',
 		columns		: 'Stolpci',
 		border		: 'Velikost obrobe',
-		align		: 'Poravnava',
-		alignLeft	: 'Levo',
-		alignCenter	: 'Sredinsko',
-		alignRight	: 'Desno',
-		width		: 'Širina',
 		widthPx		: 'pik',
 		widthPc		: 'procentov',
 		widthUnit	: 'width unit', // MISSING
-		height		: 'Višina',
 		cellSpace	: 'Razmik med celicami',
 		cellPad		: 'Polnilo med celicami',
 		caption		: 'Naslov',
@@ -282,9 +291,6 @@ CKEDITOR.lang['sl'] =
 			wordWrap		: 'Prelom besedila',
 			hAlign			: 'Vodoravna poravnava',
 			vAlign			: 'Navpična poravnava',
-			alignTop		: 'Vrh',
-			alignMiddle		: 'Sredina',
-			alignBottom		: 'Dno',
 			alignBaseline	: 'Osnovnica',
 			bgColor			: 'Barva ozadja',
 			borderColor		: 'Barva obrobe',
@@ -405,24 +411,17 @@ CKEDITOR.lang['sl'] =
 		btnUpload	: 'Pošlji na strežnik',
 		upload		: 'Pošlji',
 		alt			: 'Nadomestno besedilo',
-		width		: 'Širina',
-		height		: 'Višina',
 		lockRatio	: 'Zakleni razmerje',
 		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Ponastavi velikost',
 		border		: 'Obroba',
 		hSpace		: 'Vodoravni razmik',
 		vSpace		: 'Navpični razmik',
-		align		: 'Poravnava',
-		alignLeft	: 'Levo',
-		alignRight	: 'Desno',
 		alertUrl	: 'Vnesite URL slike',
 		linkTab		: 'Povezava',
 		button2Img	: 'Želiš pretvoriti izbrani gumb s sliko v preprosto sliko?',
 		img2Button	: 'Želiš pretvoriti izbrano sliko v gumb s sliko?',
 		urlMissing	: 'Manjka vir (URL) slike.',
-		validateWidth	: 'Width must be a whole number.', // MISSING
-		validateHeight	: 'Height must be a whole number.', // MISSING
 		validateBorder	: 'Border must be a whole number.', // MISSING
 		validateHSpace	: 'HSpace must be a whole number.', // MISSING
 		validateVSpace	: 'VSpace must be a whole number.' // MISSING
@@ -446,16 +445,10 @@ CKEDITOR.lang['sl'] =
 		accessAlways	: 'Vedno',
 		accessSameDomain: 'Samo ista domena',
 		accessNever		: 'Nikoli',
-		align			: 'Poravnava',
-		alignLeft		: 'Levo',
 		alignAbsBottom	: 'Popolnoma na dno',
 		alignAbsMiddle	: 'Popolnoma v sredino',
 		alignBaseline	: 'Na osnovno črto',
-		alignBottom		: 'Na dno',
-		alignMiddle		: 'V sredino',
-		alignRight		: 'Desno',
 		alignTextTop	: 'Besedilo na vrh',
-		alignTop		: 'Na vrh',
 		quality			: 'Kakovost',
 		qualityBest		: 'Najvišja',
 		qualityHigh		: 'Visoka',
@@ -469,13 +462,9 @@ CKEDITOR.lang['sl'] =
 		windowMode		: 'Vrsta okna',
 		flashvars		: 'Spremenljivke za Flash',
 		bgcolor			: 'Barva ozadja',
-		width			: 'Širina',
-		height			: 'Višina',
 		hSpace			: 'Vodoravni razmik',
 		vSpace			: 'Navpični razmik',
 		validateSrc		: 'Vnesite URL povezave',
-		validateWidth	: 'Širina mora biti število.',
-		validateHeight	: 'Višina mora biti število.',
 		validateHSpace	: 'Vodoravni razmik mora biti število.',
 		validateVSpace	: 'Navpični razmik mora biti število.'
 	},
@@ -610,6 +599,15 @@ CKEDITOR.lang['sl'] =
 		remove				: 'Remove Div' // MISSING
   	},
 
+	iframe :
+	{
+		title		: 'iFrame Properties', // MISSING
+		toolbar		: 'iFrame', // MISSING
+		noUrl		: 'Please type the iFrame URL', // MISSING
+		scrolling	: 'Enable scrollbars', // MISSING
+		border		: 'Show frame border' // MISSING
+	},
+
 	font :
 	{
 		label		: 'Pisava',
@@ -642,7 +640,7 @@ CKEDITOR.lang['sl'] =
 		'008080' : 'Teal', // MISSING
 		'000080' : 'Navy', // MISSING
 		'4B0082' : 'Indigo', // MISSING
-		'696969' : 'Dim Gray', // MISSING
+		'696969' : 'Dark Gray', // MISSING
 		'B22222' : 'Fire Brick', // MISSING
 		'A52A2A' : 'Brown', // MISSING
 		'DAA520' : 'Golden Rod', // MISSING
@@ -658,7 +656,7 @@ CKEDITOR.lang['sl'] =
 		'0FF' : 'Cyan', // MISSING
 		'00F' : 'Blue', // MISSING
 		'EE82EE' : 'Violet', // MISSING
-		'A9A9A9' : 'Dark Gray', // MISSING
+		'A9A9A9' : 'Dim Gray', // MISSING
 		'FFA07A' : 'Light Salmon', // MISSING
 		'FFA500' : 'Orange', // MISSING
 		'FFFF00' : 'Yellow', // MISSING
@@ -707,7 +705,7 @@ CKEDITOR.lang['sl'] =
 		dic_restore		: 'Restore', // MISSING
 		dic_delete		: 'Delete', // MISSING
 		dic_rename		: 'Rename', // MISSING
-		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type it\'s name and click the Restore button.', // MISSING
+		dic_info		: 'Initially the User Dictionary is stored in a Cookie. However, Cookies are limited in size. When the User Dictionary grows to a point where it cannot be stored in a Cookie, then the dictionary may be stored on our server. To store your personal dictionary on our server you should specify a name for your dictionary. If you already have a stored dictionary, please type its name and click the Restore button.', // MISSING
 
 		aboutTab		: 'O storitvi'
 	},
@@ -725,10 +723,11 @@ CKEDITOR.lang['sl'] =
 
 	fakeobjects :
 	{
-		anchor	: 'Sidro',
-		flash	: 'Flash animacija',
-		div		: 'Prelom strani',
-		unknown	: 'Neznan objekt'
+		anchor		: 'Sidro',
+		flash		: 'Flash animacija',
+		iframe		: 'iFrame', // MISSING
+		hiddenfield	: 'Hidden Field', // MISSING
+		unknown		: 'Neznan objekt'
 	},
 
 	resize : 'Potegni za spremembo velikosti',
@@ -743,5 +742,11 @@ CKEDITOR.lang['sl'] =
 	},
 
 	toolbarCollapse	: 'Collapse Toolbar', // MISSING
-	toolbarExpand	: 'Expand Toolbar' // MISSING
+	toolbarExpand	: 'Expand Toolbar', // MISSING
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

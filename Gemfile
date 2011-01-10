@@ -1,12 +1,13 @@
 source :gemcutter
 
-gem "rails", "3.0.0"
+gem "rails"
 
-#gem "mysql2"
-#gem "mysql", :require => "mysql"
+gem "mysql2"
 gem 'ruby-mysql' #native ruby MySQL gem for OSX happiness
 
-gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
+gem 'ckeditor', '3.5.0'
+
+gem "paperclip", "~> 2.3.8"
 
 gem "acts_as_list"
 

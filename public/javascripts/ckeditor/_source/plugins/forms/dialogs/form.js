@@ -84,17 +84,17 @@ CKEDITOR.dialog.add( 'form', function( editor )
 						accessKey : 'N',
 						setup : function( element )
 						{
-							this.setValue( element.getAttribute( '_cke_saved_name' ) ||
+							this.setValue( element.data( 'cke-saved-name' ) ||
 									element.getAttribute( 'name' ) ||
 									'' );
 						},
 						commit : function( element )
 						{
 							if ( this.getValue() )
-								element.setAttribute( '_cke_saved_name', this.getValue() );
+								element.data( 'cke-saved-name', this.getValue() );
 							else
 							{
-								element.removeAttribute( '_cke_saved_name' );
+								element.data( 'cke-saved-name', false );
 								element.removeAttribute( 'name' );
 							}
 						}
@@ -104,7 +104,7 @@ CKEDITOR.dialog.add( 'form', function( editor )
 						type : 'text',
 						label : editor.lang.form.action,
 						'default' : '',
-						accessKey : 'A'
+						accessKey : 'T'
 					},
 					{
 						type : 'hbox',

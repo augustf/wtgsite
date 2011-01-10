@@ -108,9 +108,9 @@ CKEDITOR.htmlParser.fragment = function()
 			}
 		}
 
-		function sendPendingBRs()
+		function sendPendingBRs( brsToIgnore )
 		{
-			while ( pendingBRs.length )
+			while ( pendingBRs.length - ( brsToIgnore || 0 ) > 0 )
 				currentNode.add( pendingBRs.shift() );
 		}
 
@@ -125,7 +125,7 @@ CKEDITOR.htmlParser.fragment = function()
 				var elementName, realElementName;
 				if ( element.attributes
 					 && ( realElementName =
-						  element.attributes[ '_cke_real_element_type' ] ) )
+						  element.attributes[ 'data-cke-real-element-type' ] ) )
 					elementName = realElementName;
 				else
 					elementName =  element.name;
@@ -236,6 +236,12 @@ CKEDITOR.htmlParser.fragment = function()
 				else if ( tagName == currentName )
 				{
 					addElement( currentNode, currentNode.parent );
+				}
+				else if ( tagName in CKEDITOR.dtd.$listItem )
+				{
+					parser.onTagOpen( 'ul', {} );
+					addPoint = currentNode;
+					reApply = true;
 				}
 				else
 				{
@@ -386,13 +392,15 @@ CKEDITOR.htmlParser.fragment = function()
 
 		parser.onComment = function( comment )
 		{
+			checkPending();
 			currentNode.add( new CKEDITOR.htmlParser.comment( comment ) );
 		};
 
 		// Parse it.
 		parser.parse( fragmentHtml );
 
-		sendPendingBRs();
+		// Send all pending BRs except one, which we consider a unwanted bogus. (#5293)
+		sendPendingBRs( !CKEDITOR.env.ie && 1 );
 
 		// Close all pending nodes.
 		while ( currentNode.type )

@@ -24,6 +24,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// Get the range for the current selection.
 			range = range || getRange( editor );
 
+			// We may not have valid ranges to work on, like when inside a
+			// contenteditable=false element.
+			if ( !range )
+				return;
+
 			var doc = range.document;
 
 			// Exit the list when we're inside an empty list item block. (#5376)
@@ -64,7 +69,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				if ( node.is( 'li' ) )
 				{
 					nextBlock.breakParent( node );
-					nextBlock.move( nextBlock.getNext(), true );
+					nextBlock.move( nextBlock.getNext(), 1 );
 				}
 			}
 			else if ( previousBlock && ( node = previousBlock.getParent() ) && node.is( 'li' ) )
@@ -93,7 +98,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			}
 			else
 			{
-				var newBlock;
+				var newBlock,
+					newBlockDir;
 
 				if ( previousBlock )
 				{
@@ -110,7 +116,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					newBlock = nextBlock.clone();
 
 				if ( !newBlock )
+				{
 					newBlock = doc.createElement( blockTag );
+					if ( previousBlock && ( newBlockDir = previousBlock.getDirection() ) )
+						newBlock.setAttribute( 'dir', newBlockDir );
+				}
 				// Force the enter block unless we're talking of a list item.
 				else if ( forceMode && !newBlock.is( 'li' ) )
 					newBlock.renameNode( blockTag );
@@ -189,6 +199,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// Get the range for the current selection.
 			range = range || getRange( editor );
 
+			// We may not have valid ranges to work on, like when inside a
+			// contenteditable=false element.
+			if ( !range )
+				return;
+
 			var doc = range.document;
 
 			// Determine the block element to be used.
@@ -212,15 +227,28 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// If we are at the end of a header block.
 			if ( !forceMode && isEndOfBlock && headerTagRegex.test( startBlockTag ) )
 			{
-				// Insert a <br> after the current paragraph.
-				doc.createElement( 'br' ).insertAfter( startBlock );
+				var newBlock,
+					newBlockDir;
 
-				// A text node is required by Gecko only to make the cursor blink.
-				if ( CKEDITOR.env.gecko )
-					doc.createText( '' ).insertAfter( startBlock );
+				if ( ( newBlockDir = startBlock.getDirection() ) )
+				{
+					newBlock = doc.createElement( 'div' );
+					newBlock.setAttribute( 'dir', newBlockDir );
+					newBlock.insertAfter( startBlock );
+					range.setStart( newBlock, 0 );
+				}
+				else
+				{
+					// Insert a <br> after the current paragraph.
+					doc.createElement( 'br' ).insertAfter( startBlock );
 
-				// IE has different behaviors regarding position.
-				range.setStartAt( startBlock.getNext(), CKEDITOR.env.ie ? CKEDITOR.POSITION_BEFORE_START : CKEDITOR.POSITION_AFTER_START );
+					// A text node is required by Gecko only to make the cursor blink.
+					if ( CKEDITOR.env.gecko )
+						doc.createText( '' ).insertAfter( startBlock );
+
+					// IE has different behaviors regarding position.
+					range.setStartAt( startBlock.getNext(), CKEDITOR.env.ie ? CKEDITOR.POSITION_BEFORE_START : CKEDITOR.POSITION_AFTER_START );
+				}
 			}
 			else
 			{
@@ -307,7 +335,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			return true;
 		}
 		else
-			return enter( editor, editor.config.shiftEnterMode, true );
+			return enter( editor, editor.config.shiftEnterMode, 1 );
 	}
 
 	function enter( editor, mode, forceMode )
@@ -325,7 +353,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		setTimeout( function()
 			{
 				editor.fire( 'saveSnapshot' );	// Save undo step.
-				if ( mode == CKEDITOR.ENTER_BR || editor.getSelection().getStartElement().hasAscendant( 'pre', true ) )
+				if ( mode == CKEDITOR.ENTER_BR || editor.getSelection().getStartElement().hasAscendant( 'pre', 1 ) )
 					enterBr( editor, mode, null, forceMode );
 				else
 					enterBlock( editor, mode, null, forceMode );
@@ -339,7 +367,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	function getRange( editor )
 	{
 		// Get the selection ranges.
-		var ranges = editor.getSelection().getRanges();
+		var ranges = editor.getSelection().getRanges( true );
 
 		// Delete the contents of all ranges except the first one.
 		for ( var i = ranges.length - 1 ; i > 0 ; i-- )
