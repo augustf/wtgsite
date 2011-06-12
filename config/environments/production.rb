@@ -30,4 +30,9 @@ Wtgsite::Application.configure do
 
   # Enable threaded mode
   # config.threadsafe!
+
+  # Compress both stylesheets and JavaScripts
+  config.assets.js_compressor  = :uglifier
+  config.assets.css_compressor = :scss
+
 end

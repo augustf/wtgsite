@@ -21,13 +21,13 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
 	  extname = File.extname(filename)
     
     case extname.to_s
-      when '.swf' then '/javascripts/ckeditor/images/swf.gif'
-      when '.pdf' then '/javascripts/ckeditor/images/pdf.gif'
-      when '.doc', '.txt' then '/javascripts/ckeditor/images/doc.gif'
-      when '.mp3' then '/javascripts/ckeditor/images/mp3.gif'
-      when '.rar', '.zip', '.tg' then '/javascripts/ckeditor/images/rar.gif'
-      when '.xls' then '/javascripts/ckeditor/images/xls.gif'
-      else '/javascripts/ckeditor/images/ckfnothumb.gif'
+      when '.swf' then '/javascripts/ckeditor/assets/swf.gif'
+      when '.pdf' then '/javascripts/ckeditor/assets/pdf.gif'
+      when '.doc', '.txt' then '/javascripts/ckeditor/assets/doc.gif'
+      when '.mp3' then '/javascripts/ckeditor/assets/mp3.gif'
+      when '.rar', '.zip', '.tg' then '/javascripts/ckeditor/assets/rar.gif'
+      when '.xls' then '/javascripts/ckeditor/assets/xls.gif'
+      else '/javascripts/ckeditor/assets/ckfnothumb.gif'
     end
 	end
 	
